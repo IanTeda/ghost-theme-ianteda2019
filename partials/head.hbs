@@ -1,0 +1,21 @@
+<head>
+    {{! Document Settings }}
+    <meta charset="utf-8" />
+    <meta name="HandheldFriendly" content="True" />
+    {{! This resizes for mobile}}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {{! Makes IE support useful HTML5/CSS3 features }}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    {{! Page Meta }}
+    <title>{{meta_title}}{{#is "post, page"}} — {{@blog.title}}{{/is}}</title>
+    <meta name="description" content="{{@blog.description}}">
+
+
+    {{!-- Styles. If using Frameworks, remember to load the framework before your custom style. --}}
+
+    <link rel="stylesheet" type="text/css" href="{{asset "styles/ghost-theme-ianteda2019.min.css"}}" />
+
+    {{! Ghost outputs important stuff with this tag }}
+    {{ghost_head}}
+</head>
