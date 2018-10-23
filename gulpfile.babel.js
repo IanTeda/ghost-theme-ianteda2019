@@ -36,7 +36,7 @@ var $ = require("gulp-load-plugins")({
 let THEME_NAME = "ghost-theme-ianteda2019";
 let THEME_PATH = "content/themes/" + THEME_NAME + "/";
 const paths = {
-  ghost: {
+  theme: {
     src: THEME_PATH + "**/*.{hbs,js,css,png,jpg,gif}"
   },
   images: {
@@ -96,10 +96,9 @@ export function startBrowserSync(callback) {
       proxy: "localhost:2368",
       port: 5000,
       browser: "google chrome",
-      notify: true,
-      files: [THEME_PATH + "/**/*.{hbs}"]
+      notify: true
     },
-    callback
+    callback()
   );
 }
 
@@ -109,33 +108,19 @@ export function startBrowserSync(callback) {
  * @param {*} callback
  */
 export function startNodemon(callback) {
-  const STARTUP_TIMEOUT = 500;
-
   // Ghost server
-  const server = $.nodemon({
-    // verbose: true,
+  var ghostServer = $.nodemon({
+    verbose: false,
     script: "current/index.js",
-    stdout: false, // without this line the stdout event won't fire
-    watch: ["content/themes/ghost-theme-ianteda2019)"],
-    ext: "hbs,js,css,png,jpg,gif"
-  });
-  let starting = false;
-
-  const onReady = () => {
-    starting = false;
-    callback();
-  };
-
-  server.on("start", () => {
-    starting = true;
-    setTimeout(onReady, STARTUP_TIMEOUT);
+    watch: ["some random text"],
+    ignore: [".git", "node_modules"],
+    ext: "hbs,js,css",
+    done: callback()
   });
 
-  server.on("stdout", stdout => {
-    process.stdout.write(stdout); // pass the stdout through
-    if (starting) {
-      onReady();
-    }
+  // This doesn't trigger BrowserSync Reload?
+  ghostServer.on("start", () => {
+    browserSync.reload();
   });
 }
 
@@ -276,7 +261,7 @@ export function watch() {
   gulp.watch(paths.sass.src, sass);
   gulp.watch(paths.scripts.src, scripts);
   gulp.watch(paths.styles.src, styles);
-  gulp.watch(paths.ghost.src).on("change", browserSync.reload);
+  gulp.watch(paths.theme.src).on("change", browserSync.reload);
 }
 
 /**
@@ -290,11 +275,11 @@ gulp.task("build", build);
  * GHOST SERVER
  * Start Nodemon and Browser Sync
  */
-const ghostServer = gulp.series(startNodemon, startBrowserSync);
+const startGhostServer = gulp.series(startBrowserSync, startNodemon);
 
 /**
  * DEFAULT
  * Export default Gulp task
  */
-const develop = gulp.series(build, ghostServer, watch);
+const develop = gulp.series(build, startGhostServer, watch);
 gulp.task("default", develop);
