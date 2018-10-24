@@ -66,7 +66,7 @@ const paths = {
     dest: THEME_PATH + "assets/styles/",
     watch: THEME_PATH + "src/styles/**/*.css"
   },
-  theme: THEME_PATH + "**/*.{hbs,js,css,png,jpg,gif}"
+  theme: THEME_PATH + "**/*.hbs"
 };
 
 /**
