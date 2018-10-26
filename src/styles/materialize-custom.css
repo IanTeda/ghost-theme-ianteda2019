@@ -1994,7 +1994,9 @@ template {
 html {
   box-sizing: border-box; }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit; }
 
 button,
@@ -2049,7 +2051,7 @@ a {
   box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2); }
 
 .hoverable {
-  transition: box-shadow .25s; }
+  transition: box-shadow 0.25s; }
   .hoverable:hover {
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
 
@@ -2126,17 +2128,18 @@ video.responsive-video {
   font-size: 18px;
   color: rgba(255, 255, 255, 0.7); }
   .breadcrumb i,
-  .breadcrumb [class^="mdi-"], .breadcrumb [class*="mdi-"],
+  .breadcrumb [class^="mdi-"],
+  .breadcrumb [class*="mdi-"],
   .breadcrumb i.material-icons {
     display: inline-block;
     float: left;
     font-size: 24px; }
   .breadcrumb:before {
-    content: '\E5CC';
+    content: "\E5CC";
     color: rgba(255, 255, 255, 0.7);
     vertical-align: top;
     display: inline-block;
-    font-family: 'Material Icons';
+    font-family: "Material Icons";
     font-weight: normal;
     font-style: normal;
     font-size: 25px;
@@ -2168,7 +2171,8 @@ video.responsive-video {
       transform: translate3d(0, 0, 0);
       transform: translateX(-50%); }
 
-.pin-top, .pin-bottom {
+.pin-top,
+.pin-bottom {
   position: relative; }
 
 .pinned {
@@ -2188,7 +2192,8 @@ ul.staggered-list li {
   Media Query Classes
 **********************/
 @media only screen and (max-width: 600px) {
-  .hide-on-small-only, .hide-on-small-and-down {
+  .hide-on-small-only,
+  .hide-on-small-and-down {
     display: none !important; } }
 
 @media only screen and (max-width: 992px) {
@@ -2253,7 +2258,9 @@ ul.staggered-list li {
     color: rgba(255, 255, 255, 0.8);
     background-color: rgba(51, 51, 51, 0.08); }
 
-table, th, td {
+table,
+th,
+td {
   border: none; }
 
 table {
@@ -2268,16 +2275,18 @@ table {
   table.striped > tbody > tr > td {
     border-radius: 0; }
   table.highlight > tbody > tr {
-    transition: background-color .25s ease; }
+    transition: background-color 0.25s ease; }
     table.highlight > tbody > tr:hover {
       background-color: rgba(242, 242, 242, 0.5); }
-  table.centered thead tr th, table.centered tbody tr td {
+  table.centered thead tr th,
+  table.centered tbody tr td {
     text-align: center; }
 
 tr {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
 
-td, th {
+td,
+th {
   padding: 15px 5px;
   display: table-cell;
   text-align: left;
@@ -2293,7 +2302,7 @@ td, th {
     position: relative;
     /* sort out borders */ }
     table.responsive-table td:empty:before {
-      content: '\00a0'; }
+      content: "\00a0"; }
     table.responsive-table th,
     table.responsive-table td {
       margin: 0;
@@ -2379,7 +2388,7 @@ td, th {
         color: #fff; }
   .collection a.collection-item {
     display: block;
-    transition: .25s;
+    transition: 0.25s;
     color: #26a69a; }
     .collection a.collection-item:not(.active):hover {
       background-color: #ddd; }
@@ -2405,7 +2414,9 @@ td, th {
   padding-bottom: 56.25%;
   height: 0;
   overflow: hidden; }
-  .video-container iframe, .video-container object, .video-container embed {
+  .video-container iframe,
+  .video-container object,
+  .video-container embed {
     position: absolute;
     top: 0;
     left: 0;
@@ -2427,11 +2438,11 @@ td, th {
     left: 0;
     bottom: 0;
     background-color: #26a69a;
-    transition: width .3s linear; }
+    transition: width 0.3s linear; }
   .progress .indeterminate {
     background-color: #26a69a; }
     .progress .indeterminate:before {
-      content: '';
+      content: "";
       position: absolute;
       background-color: inherit;
       top: 0;
@@ -2440,7 +2451,7 @@ td, th {
       will-change: left, right;
       animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite; }
     .progress .indeterminate:after {
-      content: '';
+      content: "";
       position: absolute;
       background-color: inherit;
       top: 0;
@@ -2484,7 +2495,8 @@ td, th {
 .right-align {
   text-align: right; }
 
-.center, .center-align {
+.center,
+.center-align {
   text-align: center; }
 
 .left {

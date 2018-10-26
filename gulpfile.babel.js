@@ -14,7 +14,7 @@ process.chdir("../../../");
  * Lazy load plugins, save on var declaration
  * Makes for a nicer read
  */
-let $ = require("gulp-load-plugins")({
+const $ = require("gulp-load-plugins")({
   //  https://github.com/jackfranklin/gulp-load-plugins
 
   // When set to true, the plugin will log info to console
@@ -34,10 +34,14 @@ let $ = require("gulp-load-plugins")({
  * PATH CONSTANTS
  * Some file pat constants
  */
-let THEME_NAME = "ghost-theme-ianteda2019";
-let THEME_PATH = "content/themes/" + THEME_NAME + "/";
+const THEME_NAME = "ghost-theme-ianteda2019";
+const THEME_PATH = "content/themes/" + THEME_NAME + "/";
 const paths = {
   assets: THEME_PATH + "assets/**/*",
+  fonts: {
+    src: THEME_PATH + "src/fonts/**/*.{eot,svg,ttf,woff,woff2,otf}",
+    dest: THEME_PATH + "assets/fonts/"
+  },
   images: {
     src: THEME_PATH + "src/images/**/*.{png,gif,jpg}",
     dest: THEME_PATH + "assets/images/"
@@ -68,17 +72,6 @@ const paths = {
   },
   theme: THEME_PATH + "**/*.hbs"
 };
-
-/**
- * SWALLOW ERROR
- * Swallow error so we don't need to restart gulp tasks
- */
-var swallowError = function swallowError(error) {
-  $.util.log(error.toString());
-  $.util.beep();
-  this.emit("end");
-};
-
 /**
  * CLEAN ASSETS
  * Delete contents in assets folder
@@ -110,7 +103,7 @@ export function startNodemon(callback) {
 
   // Ghost server
   const ghostServer = $.nodemon({
-    //verbose: false,
+    // verbose: false,
     script: "current/index.js",
     watch: ["some random text"],
     ignore: [".git", "node_modules"],
@@ -139,11 +132,23 @@ export function startNodemon(callback) {
 }
 
 /**
+ * FONTS
+ * Copy fonts and flatten folder structure
+ */
+export function fonts() {
+  return gulp
+    .src(paths.fonts.src)
+    .pipe($.flatten())
+    .pipe($.size({ title: "Flatten font folder structure:" }))
+    .pipe(gulp.dest(paths.fonts.dest));
+}
+
+/**
  * IMAGES TASK
  * Resize and optimise images
  */
 export function images() {
-  let imageminOptions = {
+  const imageminOptions = {
     // https://github.com/sindresorhus/gulp-imagemin
     interlaced: true,
     optimizationLevel: 7,
@@ -154,9 +159,6 @@ export function images() {
   return (
     gulp
       .src(paths.images.src)
-      // Swallow task  error
-      .on("error", swallowError)
-
       // Minimise images
       .pipe($.imagemin(imageminOptions))
 
@@ -195,8 +197,6 @@ export function scripts() {
   return (
     gulp
       .src(paths.scripts.src)
-      // Swallow task  error
-      .on("error", swallowError)
 
       // Use source maps for debugging
       .pipe($.sourcemaps.init())
@@ -206,7 +206,7 @@ export function scripts() {
       .pipe($.size({ title: "Scripts concatenated into one file:" }))
 
       // Remove white space
-      .pipe($.uglify().on("error", swallowError))
+      // .pipe($.uglify())
 
       // Write source maps to destination folder for easier debugging
       .pipe($.sourcemaps.write("."))
@@ -225,7 +225,7 @@ export function scripts() {
  */
 export function styles() {
   // What plugins should we use with PostCSS
-  let postcssPlugins = [
+  const postcssPlugins = [
     // NOTE: Order is important
     require("postcss-import"),
     require("autoprefixer")({ browsers: ["last 3 version"] }),
@@ -238,8 +238,6 @@ export function styles() {
   return (
     gulp
       .src(paths.styles.src)
-      // Swallow task  error
-      .on("error", swallowError)
 
       // Initiate sourcemaps for easy debug
       .pipe($.sourcemaps.init())
@@ -284,7 +282,11 @@ export function watch() {
  * BUILD ASSETS
  * Build out assets with Gulp
  */
-const build = gulp.series(clean, sass, gulp.parallel(styles, scripts, images));
+const build = gulp.series(
+  clean,
+  sass,
+  gulp.parallel(styles, scripts, images, fonts)
+);
 gulp.task("build", build);
 
 /**
