@@ -12,8 +12,9 @@ process.chdir("../../../");
 /**
  * GULP LOAD PLUGINS
  * Lazy load plugins, save on var declaration
+ * Makes for a nicer read
  */
-var $ = require("gulp-load-plugins")({
+const $ = require("gulp-load-plugins")({
   //  https://github.com/jackfranklin/gulp-load-plugins
 
   // When set to true, the plugin will log info to console
@@ -31,13 +32,15 @@ var $ = require("gulp-load-plugins")({
 
 /**
  * PATH CONSTANTS
- * Some constants for file paths
+ * Some file pat constants
  */
-let THEME_NAME = "ghost-theme-ianteda2019";
-let THEME_PATH = "content/themes/" + THEME_NAME + "/";
+const THEME_NAME = "ghost-theme-ianteda2019";
+const THEME_PATH = "content/themes/" + THEME_NAME + "/";
 const paths = {
-  theme: {
-    src: THEME_PATH + "**/*.{hbs,js,css,png,jpg,gif}"
+  assets: THEME_PATH + "assets/**/*",
+  fonts: {
+    src: THEME_PATH + "src/fonts/**/*.{eot,svg,ttf,woff,woff2,otf}",
+    dest: THEME_PATH + "assets/fonts/"
   },
   images: {
     src: THEME_PATH + "src/images/**/*.{png,gif,jpg}",
@@ -46,7 +49,8 @@ const paths = {
   sass: {
     filename: "materialize-custom.css",
     src: THEME_PATH + "src/sass/materialize.scss",
-    dest: THEME_PATH + "src/styles/"
+    dest: THEME_PATH + "src/styles/",
+    watch: THEME_PATH + "src/sass/**/*.scss"
   },
   scripts: {
     filename: THEME_NAME + ".min.js",
@@ -63,43 +67,30 @@ const paths = {
   styles: {
     filename: THEME_NAME + ".min.css",
     src: THEME_PATH + "src/styles/main.css",
-    dest: THEME_PATH + "assets/styles/"
-  }
+    dest: THEME_PATH + "assets/styles/",
+    watch: THEME_PATH + "src/styles/**/*.css"
+  },
+  theme: THEME_PATH + "**/*.hbs"
 };
-
-/**
- * SWALLOW ERROR
- * Swallow error so we don't need to restart gulp tasks
- */
-var swallowError = function swallowError(error) {
-  $.util.log(error.toString());
-  $.util.beep();
-  this.emit("end");
-};
-
 /**
  * CLEAN ASSETS
  * Delete contents in assets folder
  */
 // Del is executed in node (shell)
-export const clean = () => $.del(["assets"]);
+export const clean = () => $.del([paths.assets]);
 
 /**
  * BROWSER SYNC
  * Sync and reload browser on changes
- * @param {*} callback
  */
-export function startBrowserSync(callback) {
-  return browserSync.init(
-    {
-      // Local ghost dev address
-      proxy: "localhost:2368",
-      port: 5000,
-      browser: "google chrome",
-      notify: true
-    },
-    callback()
-  );
+export function startBrowserSync() {
+  return browserSync.init({
+    // Local ghost dev address
+    proxy: "localhost:2368",
+    port: 5000,
+    browser: "google chrome",
+    notify: true
+  });
 }
 
 /**
@@ -108,20 +99,48 @@ export function startBrowserSync(callback) {
  * @param {*} callback
  */
 export function startNodemon(callback) {
+  const STARTUP_TIMEOUT = 5000;
+
   // Ghost server
-  var ghostServer = $.nodemon({
-    verbose: false,
+  const ghostServer = $.nodemon({
+    // verbose: false,
     script: "current/index.js",
     watch: ["some random text"],
     ignore: [".git", "node_modules"],
     ext: "hbs,js,css",
-    done: callback()
+    stdout: false // without this line the stdout event won't fire
   });
 
-  // This doesn't trigger BrowserSync Reload?
+  let starting = false;
+
+  const onReady = () => {
+    starting = false;
+    callback();
+  };
+
   ghostServer.on("start", () => {
-    browserSync.reload();
+    starting = true;
+    setTimeout(onReady, STARTUP_TIMEOUT);
   });
+
+  ghostServer.on("stdout", stdout => {
+    process.stdout.write(stdout); // pass the stdout through
+    if (starting) {
+      onReady();
+    }
+  });
+}
+
+/**
+ * FONTS
+ * Copy fonts and flatten folder structure
+ */
+export function fonts() {
+  return gulp
+    .src(paths.fonts.src)
+    .pipe($.flatten())
+    .pipe($.size({ title: "Flatten font folder structure:" }))
+    .pipe(gulp.dest(paths.fonts.dest));
 }
 
 /**
@@ -129,9 +148,8 @@ export function startNodemon(callback) {
  * Resize and optimise images
  */
 export function images() {
-  let imageminOptions = {
+  const imageminOptions = {
     // https://github.com/sindresorhus/gulp-imagemin
-
     interlaced: true,
     optimizationLevel: 7,
     progressive: true,
@@ -141,9 +159,6 @@ export function images() {
   return (
     gulp
       .src(paths.images.src)
-      // Swallow task  error
-      .on("error", swallowError)
-
       // Minimise images
       .pipe($.imagemin(imageminOptions))
 
@@ -182,8 +197,6 @@ export function scripts() {
   return (
     gulp
       .src(paths.scripts.src)
-      // Swallow task  error
-      .on("error", swallowError)
 
       // Use source maps for debugging
       .pipe($.sourcemaps.init())
@@ -193,7 +206,7 @@ export function scripts() {
       .pipe($.size({ title: "Scripts concatenated into one file:" }))
 
       // Remove white space
-      .pipe($.uglify().on("error", swallowError))
+      // .pipe($.uglify())
 
       // Write source maps to destination folder for easier debugging
       .pipe($.sourcemaps.write("."))
@@ -212,7 +225,7 @@ export function scripts() {
  */
 export function styles() {
   // What plugins should we use with PostCSS
-  let postcssPlugins = [
+  const postcssPlugins = [
     // NOTE: Order is important
     require("postcss-import"),
     require("autoprefixer")({ browsers: ["last 3 version"] }),
@@ -225,8 +238,6 @@ export function styles() {
   return (
     gulp
       .src(paths.styles.src)
-      // Swallow task  error
-      .on("error", swallowError)
 
       // Initiate sourcemaps for easy debug
       .pipe($.sourcemaps.init())
@@ -256,30 +267,31 @@ export function styles() {
  * Watch source files for changes and execute task on change
  */
 export function watch() {
+  // Initiate BrowserSync
+  startBrowserSync();
+
   // Watch for changes, then trigger tasks on change
   gulp.watch(paths.images.src, images);
-  gulp.watch(paths.sass.src, sass);
+  gulp.watch(paths.sass.watch, sass);
   gulp.watch(paths.scripts.src, scripts);
-  gulp.watch(paths.styles.src, styles);
-  gulp.watch(paths.theme.src).on("change", browserSync.reload);
+  gulp.watch(paths.styles.watch, styles);
+  gulp.watch(paths.theme).on("change", browserSync.reload);
 }
 
 /**
  * BUILD ASSETS
  * Build out assets with Gulp
  */
-const build = gulp.series(clean, sass, gulp.parallel(styles, scripts, images));
+const build = gulp.series(
+  clean,
+  sass,
+  gulp.parallel(styles, scripts, images, fonts)
+);
 gulp.task("build", build);
-
-/**
- * GHOST SERVER
- * Start Nodemon and Browser Sync
- */
-const startGhostServer = gulp.series(startBrowserSync, startNodemon);
 
 /**
  * DEFAULT
  * Export default Gulp task
  */
-const develop = gulp.series(build, startGhostServer, watch);
+const develop = gulp.series(build, startNodemon, watch);
 gulp.task("default", develop);

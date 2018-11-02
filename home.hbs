@@ -1,0 +1,243 @@
+{{!< default}}
+
+<main class="content" role="main">
+    {{!-- Header for landing page --}}
+    <header id="index-header" class="z-depth-1 flow-text" style="background-image: url({{asset "images/cover-home.jpg"}})">
+
+        {{> navigation}}
+
+        <div class="valign-wrapper">
+
+            <div class="container">
+                <div class="row  center">
+                    <h1 class="header white-text"><strong>{{@blog.title}}</strong></h1>
+
+                    <nav class="transparent nav-center z-depth-0">
+                        <div class="nav-wrapper">
+                            {{@blog.description}}
+                        </div>
+                    </nav>
+
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    {{!-- All about Ian Teda, the elevator pitch --}}
+    <div id="about" class="container">
+        <div class="row">
+            <div class="col s12">
+                <h3 id="it-about" class="header">About</h3>
+                <p class="flow-text text-justify">
+                    <em>Hi, I am <strong>Ian Teda</strong> and this my story so far:</em>
+                </p>
+                <div class="divider"></div>
+
+                <p class="flow-text text-justify">I enjoy a good adventure, and cannot help but wonder what is around
+                    the next corner. My most exciting adventure at
+                    the moment is raising my two young boys – Austin and Dillan – with my beautiful wife Laura.</p>
+
+                <p class="flow-text text-justify">I have been fortunate to work as a Civil Engineer on some amazing
+                    infrastructure projects within NSW and ACT Australia.
+                    Some highlights from that work, that I am proud to say I was involved in include: balanced
+                    cantilever segmental bridges;
+                    dry well intake tower and new RCC dam; bulk earthworks; the manufacture of pre-tensioned bridge
+                    elements such as
+                    pile caps, Super T beams, planks and Reinforced Concrete Box Culverts; the Sydney Light Rail
+                    design.</p>
+
+                <p class="flow-text text-justify">My hard work and determination has come with the satisfaction of
+                    seeing large infrastructure projects being born, projects
+                    that I am proud to tell my boys I have worked on.</p>
+
+                <p class="flow-text text-justify">To find out more about my work, checkout my
+                    <a href="#">LinkedIn Profile
+                        <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                    </a>
+                </p>
+
+                <p class="flow-text text-justify">To find out what I am up to right now, checkout my
+                    <a href="#">now page</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    {{!-- What do I value, my principles. Why should you listen to me --}}
+    <div id="code" class="grey lighten-4">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <h3>Code</h3>
+                    <p class="flow-text text-justify">
+                        <em>What I am trying to live by:</em>
+                    </p>
+                    <div class="divider"></div>
+                    <br />
+
+                    <!-- shown on tablet screens and up -->
+                    <div class="row valign-wrapper hide-on-small-only">
+                        <div class="col s3">
+                            <img class="circle z-depth-2 headshot" width="100%" src="{{asset "images/head-shot.png"}}"
+                                alt="Ian Teda head shot">
+                        </div>
+                        <div class="col s9">
+                            <blockquote>
+                                <p class="flow-text text-justify no-margin ">I choose to be authentic through honesty,
+                                    integrity and transparency. With a spirit for creativity, imagination
+                                    and adventure. Seeking personal growth by being curious, learning and reflecting.
+                                    Looking for freedom through
+                                    the discipline of habit. But most of all I am trying to be useful by adding value
+                                    in what I do.
+                                    <cite>– Ian Teda</cite>
+                                </p>
+                            </blockquote>
+                        </div>
+                    </div>
+
+                    <!-- shown on mobile screens -->
+                    <div class="row hide-on-med-and-up">
+                        <div class="col s8 offset-s2">
+                            <img class="circle z-depth-2" width="100%" src="{{asset "images/head-shot.png"}}" alt="Ian Teda head shot">
+                        </div>
+                        <div class="col s12">
+                            <blockquote class="no-margin">
+                                <p class="flow-text text-justify">I choose to be authentic through honesty, integrity
+                                    and transparency. With a spirit for creativity, imagination
+                                    and adventure. Seeking personal growth by being curious, learning and reflecting.
+                                    Looking for freedom through
+                                    the discipline of habit. But most of all I am trying to be useful by adding value
+                                    in what I do.
+                                    <cite>– Ian Teda</cite>
+                                </p>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{!-- How can I add value --}}
+    <div id="skills" class="container">
+        <div class="section">
+
+            <div class="row">
+
+                <h3 class="header">Skills</h3>
+                <p class="flow-text">
+                    <em>My curiosity has lead to skills in:</em>
+                </p>
+                <div class="divider"></div>
+
+
+                <div class="col s12 m6">
+                    <div class="icon-block">
+                        <h2 class="center">
+                            <a href="categories/leadership">
+                                <span class="icon large">{{> icons/supervisor_account}}</span>
+                            </a>
+                        </h2>
+                        <h5 class="center">
+                            <a href="categories/leadership">Leadership</a>
+                        </h5>
+
+                        <p class="light flow-text center-align">Project Management, Cost Management, Scheduling,
+                            Estimating, Community, &amp; Contract Management.</p>
+                    </div>
+                </div>
+
+                <div class="col s12 m6">
+                    <div class="icon-block">
+                        <h2 class="center">
+                            <a href="categories/engineering">
+                                <span class="icon large">{{> icons/tram}}</span>
+                            </a>
+                        </h2>
+                        <h5 class="center">
+                            <a href="categories/engineering">Engineering</a>
+                        </h5>
+
+                        <p class="light flow-text center-align">Bridges, Drainage, Dams, Water, Precast, Bulk
+                            Earthworks, Drill &amp; Blast, Diaphragm Wall Tunnels, Structures
+                            &amp; Light Rail,
+                            <a href="/series/the-engineering-rule-book/">Engineering Rule Book</a>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="icon-block">
+                        <h2 class="center">
+                            <a href="categories/programming">
+                                <span class="icon large">{{> icons/code}}</span>
+                            </a>
+                        </h2>
+                        <h5 class="center">
+                            <a href="categories/programming">Programming</a>
+                        </h5>
+
+                        <p class="light flow-text center-align">Web Design, Javascript, Java (Andriod), SQL &amp;
+                            MongoDB.</p>
+                    </div>
+                </div>
+
+                <div class="col s12 m6">
+                    <div class="icon-block">
+                        <h2 class="center">
+                            <a href="categories/creativity">
+                                <span class="icon large">{{> icons/copyright}}</span>
+                            </a>
+                        </h2>
+                        <h5 class="center">
+                            <a href="categories/creativity">Creativity</a>
+                        </h5>
+
+                        <p class="light flow-text center-align">Videography, Photography, Maker (Arduino, Raspberry Pi)
+                            &amp; Music.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {{!-- Featured posts. How have I been adding value --}}
+    <div id="blog" class="grey lighten-4">
+        <div id="index-featured" class="container">
+            <div class="row">
+                <div class="col s12">
+                    <a href="/categories">
+                        <h3 class="valign-wrapper black-text">
+                            Feature Blog Posts
+                        </h3>
+                    </a>
+                    <p class="flow-text text-justify">
+                        <em>Some ideas (thoughts) that I have put a URL to recently:</em>
+                    </p>
+                </div>
+                <p>Featured</p>
+            </div>
+        </div>
+    </div>
+
+    {{!-- Get added to the email list --}}
+    <div id="email_list" class="container">
+        <div class="section">
+            <h3 id="it-featured">Email List</h3>
+            <p class="flow-text text-justify">
+                <em>Keep up date with the latest happenings:</em>
+            </p>
+            <div class="divider"></div>
+            <br>
+            <br>
+            <br>
+
+            {{> mailchimp}}
+
+        </div>
+    </div>
+
+</main>

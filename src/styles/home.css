@@ -1,0 +1,28 @@
+#index-header {
+  height: 90vh;
+  width: 100%;
+  background-size: cover;
+  background-position: top;
+
+  .valign-wrapper {
+    height: calc(100% - 64px); /** <-- Vertical **/
+  }
+
+  h1 {
+    margin: auto;
+  }
+
+  .nav-center ul {
+    text-align: center;
+  }
+
+  .nav-center ul li {
+    display: inline;
+    float: none;
+  }
+
+  .nav-center ul li a {
+    display: inline-block;
+    font-size: 1.8em;
+  }
+}
