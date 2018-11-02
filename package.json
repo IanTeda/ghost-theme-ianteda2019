@@ -49,10 +49,22 @@
     "cssnano": "^4.1.4",
     "del": "^3.0.0",
     "eslint": "^5.7.0",
+    "eslint-config-google": "^0.11.0",
+    "eslint-config-logux": "^26.0.0",
+    "eslint-config-postcss": "^3.0.6",
     "eslint-config-prettier": "^3.1.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.26.1",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-prefer-let": "^1.0.1",
     "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-standard": "^4.0.0",
     "gulp": "^4.0.0",
     "gulp-concat": "^2.6.1",
+    "gulp-flatten": "^0.4.0",
     "gulp-imagemin": "^4.1.0",
     "gulp-livereload": "^4.0.0",
     "gulp-load-plugins": "^1.5.0",
@@ -75,24 +87,5 @@
   "config": {
     "posts_per_page": 25
   },
-  "dependencies": {},
-  "eslintConfig": {
-    "extends": [
-      "plugin:prettier/recommended"
-    ],
-    "plugins": [
-      "prettier"
-    ],
-    "rules": {
-      "prettier/prettier": "error"
-    },
-    "env": {
-      "browser": true,
-      "es6": true,
-      "node": true
-    },
-    "parserOptions": {
-      "sourceType": "module"
-    }
-  }
+  "dependencies": {}
 }
