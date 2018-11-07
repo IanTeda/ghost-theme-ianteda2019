@@ -11,7 +11,7 @@ $(document).ready(() => {
     // Default is 300
     menuWidth: 250,
     // Choose the horizontal origin
-    edge: "right",
+    edge: "left",
     // Closes side-nav on <a> clicks, useful for Angular/Meteor
     closeOnClick: true,
     // Choose whether you can drag to open on touch screens,
@@ -19,6 +19,6 @@ $(document).ready(() => {
     // A function to be called when sideNav is opened
     onOpen(el) {},
     // A function to be called when sideNav is closed
-    onClose (el) {}
+    onClose(el) {}
   });
 });

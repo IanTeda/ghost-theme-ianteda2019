@@ -60,7 +60,9 @@ const paths = {
       THEME_PATH + "src/scripts/jquery.fitvids-1.1.js",
       THEME_PATH + "src/scripts/wow-1.1.3.js",
       THEME_PATH + "src/scripts/materialize.js",
-      THEME_PATH + "src/scripts/main.js"
+      THEME_PATH + "src/scripts/main.js",
+      THEME_PATH + "src/scripts/navbar-search-extend.js",
+      THEME_PATH + "src/scripts/ghost-search.js"
     ],
     dest: THEME_PATH + "assets/scripts/"
   },
