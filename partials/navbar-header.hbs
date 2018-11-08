@@ -4,28 +4,21 @@
             <a href="#" class="brand-logo center">{{@blog.title}}</a>
             <ul class="left">
                 <li>
-                    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <a href="#" data-target="sidenav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                </li>
+            </ul>
+
+            <ul class="right">
+                <li>
+                    <a href="#modal-search" data-target="" class="modal-trigger"><i class="material-icons">search</i></a>
+                    {{> modal-search}}
                 </li>
             </ul>
             
-            <form action="" class="browser-default right">
-                <input id="search-input" placeholder="Search" type="text" class="browser-default search-field" name="q" value="" autocomplete="off" aria-label="Search box">
-                <label for="search-input"><i class="material-icons search-icon">search</i></label> 
-                <i class="material-icons search-close-icon">cancel</i>
-                <div class="search-popup">
-                    <div class="search-content">
-                        <label class="search-heading">Most Visited</label>
-                        <ul class="popup-list">
-                            <li class=""><a class="grey-text" href="#">Google</a></li>
-                            <li class=""><a class="grey-text" href="#">Apple</a></li><li class=""><a class="grey-text" href="#">Microsoft</a></li><li class=""><a class="grey-text" href="#">Github</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </form>
         </div>
     </nav>
 </div>
 
-<ul class="sidenav" id="mobile-demo">
+<ul class="sidenav" id="sidenav">
     {{navigation}}
 </ul>

@@ -1,0 +1,16 @@
+/**
+ * Modal Search Changes
+ */
+#modal-search { 
+    min-height: 50px;
+    max-height: 700px;
+    width: 600px !important; 
+    height: 75% !important; 
+}
+
+@media only screen and (max-width: 600px) {
+    #modal-search { 
+        width: 95% !important;
+        height: 95% !important;
+    }
+}
