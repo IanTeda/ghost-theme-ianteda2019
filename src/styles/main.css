@@ -4,6 +4,8 @@
 @import "./kg-gallery";
 @import "./home";
 @import "./icons";
-@import "./sidenav";
 @import "./fonts";
+@import "./navbar";
+@import "./modal";
+@import "./footer";
 

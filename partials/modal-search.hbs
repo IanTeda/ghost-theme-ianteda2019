@@ -1,0 +1,26 @@
+{{!-- Modal Search Trigger --}}
+<a href="#modal-search" data-target="" class="modal-trigger"><i class="material-icons">search</i></a>
+
+
+{{!-- Modal Search --}}
+<div id="modal-search" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <div class="row">
+            <div class="col s12">
+                <div class="row">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat right">
+                        <i class="material-icons">close</i>
+                    </a>
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">search</i>
+                        <input id="ghost-search-field" type="text" class="validate">
+                        <label for="ghost-search-field">Search Blog</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="ghost-search-results" class="collection col s12"></div>
+        </div>
+    </div>
+</div>
