@@ -1,5 +1,40 @@
 {{!-- Style the footer here --}}
 
-<footer>
-    <p><a href="/">© {{@blog.title}}</a></p>
-</footer>
+<footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Ian Teda</h5>
+                <p class="grey-text text-lighten-4">
+                  I choose to be authentic through honesty, integrity and transparency. With a spirit for creativity, imagination and adventure. Seeking personal growth by being curious, learning and reflecting. Looking for freedom through the discipline of habit. But most of all I am trying to be useful by adding value in what I do.
+                </p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Navigation</h5>
+                <ul class="links">
+                  {{navigation}}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+              <div class="row">
+                <div class="col s6">
+                  © 2019 Ian Teda
+                </div>
+                <div class="col s6">
+                  <a class="right brand grey-text text-lighten-3" href="https://github.com/IanTeda" target="_blank">{{> icons/github}}</a>
+                  <a class="right brand grey-text text-lighten-3" href="https://www.instagram.com/ianteda/" target="_blank">{{> icons/instagram}}</a>
+                  <a class="right brand grey-text text-lighten-3" href="https://www.linkedin.com/in/ianteda/" target="_blank">{{> icons/linkedin}}</a>
+                  <a class="right brand grey-text text-lighten-3" href="https://twitter.com/IanTeda" target="_blank">{{> icons/twitter}}</a>
+                  <a class="right brand grey-text text-lighten-3" href="https://www.strava.com/athletes/ianteda" target="_blank">{{> icons/strava}}</a>
+                  <a class="right brand grey-text text-lighten-3" href="mailto:ian@teda.id.au" target="_blank">{{> icons/email}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+
+{{! Ghost outputs important scripts with this, including the the content for the code injection panel.  }}
+{{ghost_foot}}

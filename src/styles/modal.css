@@ -14,3 +14,7 @@
         height: 95% !important;
     }
 }
+
+.modal-header {
+    border-bottom-width: 1px;
+}

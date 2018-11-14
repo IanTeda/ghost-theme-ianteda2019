@@ -1,0 +1,66 @@
+// Header Styles
+$h1-fontsize: 4.2rem !default;
+$h2-fontsize: 3.56rem !default;
+$h3-fontsize: 2.92rem !default;
+$h4-fontsize: 2.28rem !default;
+$h5-fontsize: 1.64rem !default;
+$h6-fontsize: 1rem !default;
+
+$small-screen: 600px !default;
+$large-screen: 1200px !default;
+
+$range : $large-screen - $small-screen !default;
+$intervals: 20 !default;
+$interval-size: $range / $intervals !default;
+
+
+@mixin flow-header-mixin ($fontsize) {
+  font-weight: 400;
+	$i: 0;
+	@while $i <= $intervals {
+		@media only screen and (min-width : 360 + ($i * $interval-size)) {
+			$newfontsize: $fontsize * (1 - (.02 * (20 - $i)));
+			font-size: $newfontsize;
+			margin: ($newfontsize / 2) 0 ($newfontsize / 2.5) 0;
+		}
+		$i: $i + 1;
+	}
+
+	// Handle below 360px screen
+	@media only screen and (max-width: 360px) {
+		$newfontsize: $fontsize * (1 - (.015 * 20 ));
+		font-size: $newfontsize;
+		margin: ($newfontsize / 2) 0 ($newfontsize / 2.5) 0;
+	}
+}
+
+
+.flow-text{
+  font-weight: 300;
+  $i: 0;
+  @while $i <= $intervals {
+    @media only screen and (min-width : 360 + ($i * $interval-size)) {
+      font-size: 1.2rem * (1 + (.02 * $i));
+    }
+    $i: $i + 1;
+  }
+  // Handle below 360px screen
+  @media only screen and (max-width: 360px) {
+    font-size: 1.2rem;
+  }
+  h1 { @include flow-header-mixin($h1-fontsize) }
+	h2 { @include flow-header-mixin($h2-fontsize) }
+	h3 { @include flow-header-mixin($h3-fontsize) }
+	h4 { @include flow-header-mixin($h4-fontsize) }
+	h5 { @include flow-header-mixin($h5-fontsize) }
+	h6 { @include flow-header-mixin($h6-fontsize) }
+  
+}
+
+h1.flow-text { @include flow-header-mixin($h1-fontsize) }
+h2.flow-text { @include flow-header-mixin($h2-fontsize) }
+h3.flow-text { @include flow-header-mixin($h3-fontsize) }
+h4.flow-text { @include flow-header-mixin($h4-fontsize) }
+h5.flow-text { @include flow-header-mixin($h5-fontsize) }
+h6.flow-text { @include flow-header-mixin($h6-fontsize) }
+

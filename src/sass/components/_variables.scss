@@ -242,7 +242,7 @@ $element-bottom-margin: ($gutter-width*2)/3 !default;
 // 13. Navigation Bar
 // ==========================================================================
 
-$navbar-color: #fff !default;
+$navbar-color: rgba(255, 255, 255, 0.98) !default;
 $navbar-height: 71px !default;
 $navbar-line-height: $navbar-height !default;
 $navbar-height-mobile: 56px !default;

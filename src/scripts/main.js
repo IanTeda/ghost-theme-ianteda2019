@@ -32,7 +32,8 @@ document.addEventListener("DOMContentLoaded", function() {
     onCloseEnd: function() {
       // TODO: Clear text feild when search result clicked
       // console.log("Close Modal");
-    }
+    },
+    opacity: 0.8
   };
   var instances = M.Modal.init(elements, options);
 });
@@ -58,3 +59,34 @@ $(document).ready(function() {
     }
   });
 });
+
+/**
+ * SHOW NAVBAR
+ * Show the navbar after scrolling past header image
+ */
+
+// Function to change the div class to hide and show
+let myScrollFunc = function() {
+  // What div are we showing and hiding
+  let navbarID = document.getElementById("navbar");
+
+  // Get div client height
+  let clientHeight = document.getElementById("index-header").clientHeight;
+
+  // Window scroll dimension
+  let y = window.scrollY;
+
+  // If we go past the header image show the navbar div
+  if (y >= clientHeight * 0.97) {
+    // Show navbar div
+    navbarID.className = "navbar-fixed";
+  } else {
+    // Hide navbar div on mobile up
+    navbarID.className = "navbar-fixed hide-on-med-and-up";
+  }
+};
+
+// Monitor document window scroll
+window.addEventListener("scroll", myScrollFunc);
+// Monitor document window resize
+window.onresize = myScrollFunc;

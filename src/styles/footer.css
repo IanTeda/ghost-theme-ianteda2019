@@ -1,0 +1,21 @@
+.footer-copyright {
+    svg {
+        width: 24px;
+        height: 24px;
+        fill: currentColor;
+    }
+    
+    .brand {
+        padding-right: 12px;
+    }
+
+    .row {
+        margin: 0;
+    }
+}
+
+.links {
+    a {
+        color: white;
+    }
+}
