@@ -71,13 +71,13 @@ let myScrollFunc = function() {
   let navbarID = document.getElementById("navbar");
 
   // Get div client height
-  let clientHeight = document.getElementById("index-header").clientHeight;
+  let clientHeight = document.getElementById("header").clientHeight;
 
   // Window scroll dimension
   let y = window.scrollY;
 
   // If we go past the header image show the navbar div
-  if (y >= clientHeight * 0.97) {
+  if (y >= clientHeight - 71 * 2) {
     // Show navbar div
     navbarID.className = "navbar-fixed";
   } else {
@@ -87,6 +87,6 @@ let myScrollFunc = function() {
 };
 
 // Monitor document window scroll
-window.addEventListener("scroll", myScrollFunc);
+//window.addEventListener("scroll", myScrollFunc);
 // Monitor document window resize
-window.onresize = myScrollFunc;
+// window.onresize = myScrollFunc;

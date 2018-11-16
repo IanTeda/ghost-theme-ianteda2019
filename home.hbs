@@ -1,59 +1,25 @@
 {{!< default}}
 
 <main id="home" class="content" role="main">
-    {{!-- Header for landing page --}}
-    <header id="index-header" class="z-depth-1 flow-text" style="background-image: url({{asset "images/cover-home.jpg"}})">
-        {{> navbar}}
 
-        <div class="valign-wrapper">
-
-            <div class="container">
-                <div class="row center">
-                    <h1 class="header white-text"><strong>{{@blog.title}}</strong></h1>
-
-                    <nav class="transparent nav-center z-depth-0">
-                        <div class="nav-wrapper white-text">
-                            {{@blog.description}}
-                        </div>
-                    </nav>
-
-                </div>
-            </div>
-
-        </div>
-        <div class="container">
-            <div class="row center">
-                <a href="#about"><i class="white-text medium material-icons center-align animated infinite bounce delay-2s slow">details</i></a>
-            </div>
-        </div>
-    </header>
+    {{!-- Header for home (landing) page --}}
+    {{>header-home}}
 
     {{!-- All about Ian Teda, the elevator pitch --}}
-    <div id="about" class="container">
+    <div id="home-about" class="container">
         <div class="row">
             <div class="col s12">
-                <h3 id="it-about" class="header">About</h3>
+                <h3 class="header">About</h3>
                 <p class="flow-text text-justify">
                     <em>Hi, I am <strong>Ian Teda</strong> and this my story so far:</em>
                 </p>
                 <div class="divider"></div>
 
-                <p class="flow-text text-justify">I enjoy a good adventure, and cannot help but wonder what is around
-                    the next corner. My most exciting adventure at
-                    the moment is raising my two young boys – Austin and Dillan – with my beautiful wife Laura.</p>
+                <p class="flow-text text-justify">I enjoy an adventure, wondering what is around the next corner and trying to be the best me. My most exciting adventure at the moment is raising my two boys – Austin and Dillan – with my beautiful wife Laura.</p>
 
-                <p class="flow-text text-justify">I have been fortunate to work as a Civil Engineer on some amazing
-                    projects within NSW and ACT Australia.
-                    Some highlights, that I am proud to say I was involved in include: balanced
-                    cantilever segmental bridges;
-                    dry well intake tower and new RCC dam; bulk earthworks; the manufacture of pre-tensioned bridge
-                    elements such as
-                    pile caps, Super T beams, planks and Reinforced Concrete Box Culverts; the Sydney Light Rail
-                    design.</p>
+                <p class="flow-text text-justify">I have been fortunate to work as a Civil Engineer on some amazing projects within NSW and ACT Australia. Some highlights, that I am proud to say I was involved in include: balanced cantilever segmental bridges; dry well intake tower and RCC dam; bulk earthworks; the manufacture of precast concrete structures; the Sydney Light Rail design.</p>
 
-                <p class="flow-text text-justify">My hard work and determination has come with the satisfaction of
-                    seeing large infrastructure projects being born, projects
-                    that I am proud to tell my boys I have worked on.</p>
+                <p class="flow-text text-justify">My hard work and determination has come with the satisfaction of seeing large infrastructure projects being born from design concepts to reality. Projects that I am proud to tell my boys I have worked on and help create.</p>
 
                 <p class="flow-text text-justify">To find out more about my work, checkout my
                     <a href="#">LinkedIn Profile
@@ -69,7 +35,7 @@
     </div>
 
     {{!-- What do I value, my principles. Why should you listen to me --}}
-    <div id="code" class="grey lighten-4">
+    <div id="home-code" class="grey lighten-4">
         <div class="container">
             <div class="row">
                 <div class="col s12">
@@ -88,7 +54,7 @@
                         </div>
                         <div class="col s9">
                             <blockquote>
-                                <p class="flow-text text-justify no-margin ">I choose to be authentic through honesty, integrity and transparency. With a spirit for creativity, imagination and adventure. Seeking personal growth by being curious, learning and reflecting. Looking for freedom through the discipline of habit. But most of all I am trying to be useful by adding value in what I do.
+                                <p class="flow-text text-justify no-margin ">I chose to be authentic through honesty, integrity and transparency. With a spirit for creativity, imagination and adventure. Striving to be uncomfortable by being curious, learning and reflecting. Looking for freedom through the discipline of habit. But most of all I am trying to be useful by adding value in what I do and who I am.
                                     <cite>– Ian Teda</cite>
                                 </p>
                             </blockquote>
@@ -116,10 +82,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
 
     {{!-- How can I add value --}}
-    <div id="skills" class="container">
+    <div id="home-skills" class="container">
         <div class="section">
 
             <div class="row">
@@ -204,11 +170,11 @@
     </div>
 
     {{!-- Featured posts. How have I been adding value --}}
-    <div id="blog" class="grey lighten-4">
-        <div id="index-featured" class="container">
+    <div id="home-feature" class="grey lighten-4">
+        <div class="container">
             <div class="row">
                 <div class="col s12">
-                    <a href="/tags">
+                    <a href="/blogs">
                         <h3 class="valign-wrapper black-text">
                             Feature Blog Posts
                         </h3>
@@ -222,7 +188,7 @@
                         {{#foreach posts}}
                             <div class="row">
                                 <div class="col s12">
-                                    <div class="card">
+                                    <div class="card hoverable">
                                         <div class="card-image">
                                             {{#if feature_image}}
                                                 <img class="z-depth-1 aspect-ration" src="{{img_url feature_image}}" />
@@ -250,7 +216,7 @@
                             {{#foreach posts}}
                              {{#unless @first}}
                                 <div class="col m6 s12">
-                                    <div class="card">
+                                    <div class="card hoverable">
                                         <div class="card-image">
                                             {{#if feature_image}}
                                                 <img class="z-depth-1 aspect-ration" src="{{img_url feature_image}}" />
@@ -278,7 +244,7 @@
     </div>
 
     {{!-- Get added to the email list --}}
-    <div id="email_list" class="container">
+    <div id="home-email-list" class="container">
         <div class="section">
             <h3 id="it-featured">Email List</h3>
             <p class="flow-text text-justify">

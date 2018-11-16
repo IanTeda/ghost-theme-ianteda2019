@@ -1,50 +1,27 @@
 {{!< default}}
 
-{{>post-header}}
+<main>
+  {{!--Start Post Context--}}
+  {{#post}}
 
-<main class="content" id="content">
+    {{!--Partial Template for Post Header--}}
+    {{>header-post}}
 
-  <article class="post {{post_class}}">
-
-    {{#post}}
-
-      <header>
-                      {{#if feature_image}}
-            <img src="{{img_url feature_image}}" alt="">
-            {{else}}
-             {{/if}}
-          <h1>{{title}}</h1>
-
-          <div>
-              Posted by <a href="{{url}}">{{primary_author.name}}</a> on
-              <time datetime="{{date format='YYYY-MM-DD'}}">
-                {{date format="MMMM Do, YYYY"}}.
-              </time>
-
-              {{#if tags}}
-                <span>
-                  {{tags prefix="Tagged "}}
-                </span>
-              {{/if}}
-          </div>
-      </header>
-
-      <section>
+    <div class="container">
+      <article id="content" class="row post {{post_class}} flow-text">
+        <h2 class="col s12 post-title">
+          {{title}}
+          <span class="flow-text right">
+            2min read
+          </span>
+        </h2>
+        <div class="divider col s12"></div>
+        <section class="col s12">
           {{content}}
-      </section>
+        </section>
+      </article>
+    </div>
 
+  {{/post}}
 
-
-      <footer>
-
-          {{> author-info}} 
-
-      {{!-- {{> subscribe-widget}} --}}
-
-      </footer>
-
-
-    {{/post}}
-
-  </article>
 </main>
