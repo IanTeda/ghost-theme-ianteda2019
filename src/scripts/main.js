@@ -44,6 +44,16 @@ document.addEventListener("DOMContentLoaded", function() {
  */
 M.updateTextFields();
 
+document.addEventListener("DOMContentLoaded", function() {
+  let elems = document.querySelectorAll(".carousel");
+  let options = {
+    fullWidth: true,
+    indicators: true,
+    duration: 100
+  };
+  var instances = M.Carousel.init(elems, options);
+});
+
 $(document).ready(function() {
   /**
    * INITIATE GHOST SEARCH
@@ -52,12 +62,18 @@ $(document).ready(function() {
   let ghostSearch = new GhostSearch({
     template: function(result) {
       // Add /blog/ route to search results
-      let url = [location.protocol, "//", location.host].join("") + "/blogs/";
+      let url = [location.protocol, "//", location.host].join("") + "/blog/";
       return (
         '<a href="' + url + "/" + result.slug + '">' + result.title + "</a>"
       );
     }
   });
+
+  autoplay();
+  function autoplay() {
+    $(".carousel").carousel("next");
+    setTimeout(autoplay, 4500);
+  }
 });
 
 /**

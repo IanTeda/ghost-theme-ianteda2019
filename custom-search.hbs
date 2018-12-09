@@ -1,0 +1,32 @@
+{{!< default}}
+{{!-- Custom Search Page Template --}}
+
+{{!--Page main block--}}
+<main class="page-search">
+
+  {{!-- Post content block --}}
+  {{#post}}
+
+    {{!-- Header for page --}}
+    {{>header-page-search}}
+
+    <div class="container">
+
+      {{!-- Page Content --}}
+      <article class="row page {{post_class}}">
+
+        <div class="input-field col s12 m8 offset-m2">
+          <i class="material-icons prefix">search</i>
+          <input id="ghost-search-field" type="text" class="validate">
+          <label for="ghost-search-field">Search Blog</label>
+        </div>
+
+        <div id="ghost-search-results" class="collection col s12 m8 offset-m2"></div>
+
+      </article>
+
+    </div>
+
+  {{/post}}
+
+</main>

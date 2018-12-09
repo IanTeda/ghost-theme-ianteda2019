@@ -1,0 +1,19 @@
+{{!-- Collection of featured posts --}}
+<div class="col s12">
+    <h4>Featured Posts</h4>
+    <ul id="featured-list" class="collection">
+        {{#get "posts" include="tags" filter="featured:true" limit="5"}}
+            {{#if posts}}
+                {{#foreach posts}}
+                    <li class="collection-item avatar">
+                        <img src="{{#if feature_image}}{{img_url feature_image}}{{else}}{{asset "images/cover-home.jpg"}}{{/if}}" alt="" class="circle">
+                        <a href="{{url}}">
+                            <span class="title">{{title}}</span>
+                        </a>
+                        <p>{{reading_time}}</p>
+                    </li>
+                {{/foreach}}
+            {{/if}}
+        {{/get}}
+    </ul>
+</div>

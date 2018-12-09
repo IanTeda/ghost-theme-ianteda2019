@@ -34,12 +34,12 @@
       .tag-wrapper a:hover {
         text-decoration: none;
       }
-  }
+}
   
-  .header-home {
-    height: 90vh;
-  }
-  
-  .header-post {
-    height: calc(90vh - 71px);
-  }
+.header-home {
+  height: 90vh;
+}
+
+.header-post {
+  height: calc(90vh - 71px);
+}

@@ -1,4 +1,21 @@
-<ul id="sidenav" class="sidenav collection with-header">
-    <li class="collection-header"><h4 class="flow-text">Ian Teda</h4></li>
-    {{navigation}}
-</ul>
+<div id="sidenav" class="container sidenav">
+    <div class="row">
+        <br/>
+        <div class="col s6 offset-s3">
+            <img class="circle z-depth-2 headshot" width="100%" src="{{asset "images/head-shot.png"}}" alt="Ian Teda head shot">
+            <h4 class="center-align">Ian Teda</h4>
+        </div>
+        <div class="col s12">
+            <ul class="collection center-align">
+                {{navigation}}
+            </ul>
+        </div>
+
+    </div>
+    
+    <div class="row social-nav center-align">
+        <div class="col s12">
+            {{> social-icons}}
+        </div>
+    </div>
+</div>

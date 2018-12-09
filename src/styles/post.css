@@ -1,0 +1,9 @@
+.next-previous {
+    img {
+        height: 60px;
+        width: 60px;
+    }
+    h5 {
+        margin: 0;
+    }
+}

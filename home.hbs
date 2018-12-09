@@ -49,8 +49,7 @@
                     <!-- shown on tablet screens and up -->
                     <div class="row valign-wrapper hide-on-small-only">
                         <div class="col s3">
-                            <img class="circle z-depth-2 headshot" width="100%" src="{{asset "images/head-shot.png"}}"
-                                alt="Ian Teda head shot">
+                            <img class="circle z-depth-2 headshot" width="100%" src="{{asset "images/head-shot.png"}}" alt="Ian Teda head shot">
                         </div>
                         <div class="col s9">
                             <blockquote>
@@ -86,90 +85,86 @@
 
     {{!-- How can I add value --}}
     <div id="home-skills" class="container">
-        <div class="section">
+        <div class="row">
 
-            <div class="row">
-
+            <div class="col s12">
                 <h3 class="header">Skills</h3>
                 <p class="flow-text">
                     <em>My curiosity has lead to skills in:</em>
                 </p>
                 <div class="divider"></div>
+            </div>
 
+            <div class="col s12 m6">
+                <div class="icon-block">
+                    <h2 class="center">
+                        <a href="tags/leadership">
+                            <i class="material-icons large">supervisor_account</i>
+                        </a>
+                    </h2>
+                    <h5 class="center">
+                        <a href="tags/leadership">Leadership</a>
+                    </h5>
 
-                <div class="col s12 m6">
-                    <div class="icon-block">
-                        <h2 class="center">
-                            <a href="tags/leadership">
-                                <i class="material-icons large">supervisor_account</i>
-                            </a>
-                        </h2>
-                        <h5 class="center">
-                            <a href="tags/leadership">Leadership</a>
-                        </h5>
-
-                        <p class="light flow-text center-align">Project Management, Cost Management, Scheduling,
-                            Estimating, Community, &amp; Contract Management.</p>
-                    </div>
-                </div>
-
-                <div class="col s12 m6">
-                    <div class="icon-block">
-                        <h2 class="center">
-                            <a href="tags/engineering">
-                                <i class="material-icons large">directions_railway</i>
-                            </a>
-                        </h2>
-                        <h5 class="center">
-                            <a href="tags/engineering">Engineering</a>
-                        </h5>
-
-                        <p class="light flow-text center-align">Bridges, Drainage, Dams, Water, Precast, Bulk
-                            Earthworks, Drill &amp; Blast, Diaphragm Wall Tunnels, Structures
-                            &amp; Light Rail,
-                            <a href="/tags/the-engineering-rule-book/">Engineering Rule Book</a>.</p>
-                    </div>
+                    <p class="light flow-text center-align">Project Management, Cost Management, Scheduling,
+                        Estimating, Community, &amp; Contract Management.</p>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col s12 m6">
-                    <div class="icon-block">
-                        <h2 class="center">
-                            <a href="tags/programming">
-                                <i class="material-icons large">computer</i>
-                            </a>
-                        </h2>
-                        <h5 class="center">
-                            <a href="tags/programming">Programming</a>
-                        </h5>
+            <div class="col s12 m6">
+                <div class="icon-block">
+                    <h2 class="center">
+                        <a href="tags/engineering">
+                            <i class="material-icons large">directions_railway</i>
+                        </a>
+                    </h2>
+                    <h5 class="center">
+                        <a href="tags/engineering">Engineering</a>
+                    </h5>
 
-                        <p class="light flow-text center-align">Web Design, Javascript, Java (Andriod), SQL &amp;
-                            MongoDB.</p>
-                    </div>
-                </div>
-
-                <div class="col s12 m6">
-                    <div class="icon-block">
-                        <h2 class="center">
-                            <a href="tags/creativity">
-                                <i class="material-icons large">copyright</i>
-                            </a>
-                        </h2>
-                        <h5 class="center">
-                            <a href="tags/creativity">Creativity</a>
-                        </h5>
-
-                        <p class="light flow-text center-align">Videography, Photography, Maker (Arduino, Raspberry Pi)
-                            &amp; Music.</p>
-                    </div>
+                    <p class="light flow-text center-align">Bridges, Drainage, Dams, Water, Precast, Bulk
+                        Earthworks, Drill &amp; Blast, Diaphragm Wall Tunnels, Structures
+                        &amp; Light Rail,
+                        <a href="/tags/the-engineering-rule-book/">Engineering Rule Book</a>.</p>
                 </div>
             </div>
 
+            <div class="col s12 m6">
+                <div class="icon-block">
+                    <h2 class="center">
+                        <a href="tags/programming">
+                            <i class="material-icons large">computer</i>
+                        </a>
+                    </h2>
+                    <h5 class="center">
+                        <a href="tags/programming">Programming</a>
+                    </h5>
+
+                    <p class="light flow-text center-align">Web Design, Javascript, Java (Andriod), SQL &amp;
+                        MongoDB.</p>
+                </div>
+            </div>
+
+            <div class="col s12 m6">
+                <div class="icon-block">
+                    <h2 class="center">
+                        <a href="tags/creativity">
+                            <i class="material-icons large">copyright</i>
+                        </a>
+                    </h2>
+                    <h5 class="center">
+                        <a href="tags/creativity">Creativity</a>
+                    </h5>
+
+                    <p class="light flow-text center-align">Videography, Photography, Maker (Arduino, Raspberry Pi)
+                        &amp; Music.</p>
+                </div>
+            </div>
         </div>
+
     </div>
 
-    {{!-- Featured posts. How have I been adding value --}}
+    {{!-- Featured post Carousel. How have I been adding value --}}
     <div id="home-feature" class="grey lighten-4">
         <div class="container">
             <div class="row">
@@ -183,80 +178,26 @@
                         <em>Some ideas (thoughts) that I have put a URL to recently:</em>
                     </p>
                 </div>
-                {{#get "posts" filter="featured:true" limit="1"}}
-                    {{#if posts}}
-                        {{#foreach posts}}
-                            <div class="row">
-                                <div class="col s12">
-                                    <div class="card hoverable">
-                                        <div class="card-image">
-                                            {{#if feature_image}}
-                                                <img class="z-depth-1 aspect-ration" src="{{img_url feature_image}}" />
-                                            {{else}}
-                                                <img class="z-depth-1 aspect-ration" src="{{asset "images/cover-home.jpg"}}" />
-                                            {{/if}}
-                                            <span class="card-title"><h4 class="flow-text">{{title}}</h4></span>
-                                        </div>
-                                        <div class="card-content flow-text text-justify">
-                                            <p>{{excerpt words="33"}}</p>
-                                        </div>
-                                        <div class="card-action">
-                                            <a href="{{url}}">Goto Post</a>
-                                            <span class="right reading-time">{{reading_time}}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {{/foreach}}
-                    {{/if}}
-                {{/get}}
-                {{#get "posts" filter="featured:true" from="2" to="3" limit="3"}}
-                    {{#if posts}}
-                        <div class="row">
-                            {{#foreach posts}}
-                             {{#unless @first}}
-                                <div class="col m6 s12">
-                                    <div class="card hoverable">
-                                        <div class="card-image">
-                                            {{#if feature_image}}
-                                                <img class="z-depth-1 aspect-ration" src="{{img_url feature_image}}" />
-                                            {{else}}
-                                                <img class="z-depth-1 aspect-ration" src="{{asset "images/cover-home.jpg"}}" />
-                                            {{/if}}
-                                            <span class="card-title"><h4 class="flow-text">{{title}}</h4></span>
-                                        </div>
-                                        <div class="card-content flow-text text-justify">
-                                            <p>{{excerpt}}</p>
-                                        </div>
-                                        <div class="card-action">
-                                            <a href="{{url}}">Goto Post</a>
-                                            <span class="right reading-time">{{reading_time}}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{/unless}}
-                            {{/foreach}}
-                        </div>
-                    {{/if}}
-                {{/get}}
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    {{>carousel-featured}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col"></div>
             </div>
         </div>
     </div>
 
     {{!-- Get added to the email list --}}
     <div id="home-email-list" class="container">
-        <div class="section">
-            <h3 id="it-featured">Email List</h3>
-            <p class="flow-text text-justify">
-                <em>Keep up date with the latest happenings:</em>
-            </p>
-            <div class="divider"></div>
-            <br>
-            <br>
-            <br>
-
-            {{> mailchimp}}
-
+        <div class="row">
+            <section class="col s12 grey lighten-4 z-depth-1">
+                <h4 class="center">Keep up to date with {{@blog.title}}</h4>
+                <h6 class="center">Get the latest posts delivered right to your inbox</h6>
+                {{> mailchimp}}
+            </section>
         </div>
     </div>
 

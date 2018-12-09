@@ -10,4 +10,7 @@
 @import "./footer";
 @import "./header";
 @import "./post";
+@import "./index";
+@import "./sidenav";
+@import "./page";
 

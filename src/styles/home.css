@@ -5,3 +5,20 @@ html {
 .text-justify {
   text-align: justify;
 }
+
+.featured.carousel-item {
+    background-size: cover;
+    resize: both;
+    box-shadow:inset 0 0 0 2000px rgba(44, 44, 44, 0.3);
+
+    a {
+      color: white;
+    }
+
+    a:link {
+      text-decoration: underline;
+    }
+    a:hover {
+      text-decoration: none;
+    }
+}

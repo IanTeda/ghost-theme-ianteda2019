@@ -1,5 +1,25 @@
-{{!
-Using the main header in this case... but can easily be modified to have a seperate header for posts and pages.
-}}
+{{> navbar}}
+<header id="header" class="header-post z-depth-1 flow-text" style="background-image: url({{#if feature_image}}{{img_url feature_image}}{{else}}{{asset "images/cover-home.jpg"}}{{/if}})">
 
-{{>main-header}}
+    <div class="valign-wrapper">
+
+        <div class="container">
+            <div class="row center">
+                <h1 class="header white-text"><strong>{{title}}</strong></h1>
+
+                <nav class="transparent nav-center z-depth-0">
+                    <div class="nav-wrapper white-text tag-wrapper">
+                        {{excerpt words="10"}}
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="container">
+        <div class="row center">
+            <a href="#content"><i class="white-text medium material-icons center-align animated infinite bounce delay-2s slow">details</i></a>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,20 @@
+{{!-- Collection of blog tags --}}
+<div class="col s12">
+    <h4>Popular Tags</h4>
+    {{#get 'tags' limit='10' include='count.posts' order='count.posts desc'}}
+        <ul class="collection">
+            {{#foreach tags}}
+                <li class="collection-item">
+                    <a href="{{url}}">
+                        {{name}}
+                        <div class="secondary-content">
+                            <span class="badge">{{count.posts}}</span>
+                        </div>
+                    </a>
+                </li>
+            {{else}}
+                <li class="collection-item">There are no tags..</li>
+            {{/foreach}}
+        </ul>
+    {{/get}}
+</div>

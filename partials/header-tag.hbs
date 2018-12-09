@@ -1,0 +1,34 @@
+{{!-- Header For Tag Pages --}}
+{{> navbar}}
+
+{{#tag}}
+<header id="header" class="header-index z-depth-1 flow-text" style="background-image: url({{#if feature_image}}{{feature_image}}{{else}}{{asset "images/cover-home.jpg"}}{{/if}})">
+    
+
+    <div class="valign-wrapper">
+
+        <div class="container">
+            <div class="row center">
+                <h1 class="header white-text"><strong>{{name}}</strong></h1>
+
+                <nav class="transparent nav-center z-depth-0">
+                    <div class="nav-wrapper white-text">
+                        {{#if description}}
+                            {{description}}
+                        {{else}}
+                            A collection of {{plural ../pagination.total empty='posts' singular='% post' plural='% posts'}}
+                        {{/if}}
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="container">
+        <div class="row center">
+            <a href="#home-about"><i class="white-text medium material-icons center-align animated infinite bounce delay-2s slow">details</i></a>
+        </div>
+    </div>
+</header>
+{{/tag}}
