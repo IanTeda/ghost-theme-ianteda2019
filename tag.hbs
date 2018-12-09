@@ -1,28 +1,38 @@
 {{!< default}}
 
-{{> page-header}}
-<section>
+<main class="tag" role="main">
+    {{> "header-tag"}}
 
-  {{#if tag.feature_image}}
-    <img src="{{tag.feature_image}}" alt="Image for {{tag.name}} tag" />
-  {{/if}}
+    <div class="container">
+        <div class="row">
+            {{!-- Blog Post Feed --}}
+            <div class="col s12 l8 post-feed">
+                <h4>Posts in {{tag.name}}</h4>
+                <div class="divider"></div>
+                {{#foreach posts}}
+                    {{> post-card}}
+                {{/foreach}}
 
-  <span >Posts Tagged:</span>
-  <h1>{{tag.name}}</h1>
+                {{pagination}}
+            </div>
 
-  <p>
-    {{tag.description}} Subscribe to this  tag’s <a href="{{@blog.url}}/tag/{{tag.slug}}/rss/">RSS feed</a> to get new {{tag.name}} posts as they’re written.
-  </p>
+            {{!--RHS Bar with navigation and tags--}}
+            <div class="col s12 l4">
+                <div class="row">
 
-  </span>
+                    {{!--Site Navigation--}}
+                    {{> navigation-list}}
 
-</section>
+                    {{!-- Collection of featured posts --}}
+                    {{> featured-list}}
 
-<main>
-    <div class="post-feed">
-   {{#foreach posts}}
-  {{> "post-card"}}
-{{/foreach}}
-</div>
+                    {{!-- Collection of blog tags --}}
+                    {{> tags-popular-list}}
+                </div>
+
+            </div>
+        </div>
+
+    </div>
 
 </main>

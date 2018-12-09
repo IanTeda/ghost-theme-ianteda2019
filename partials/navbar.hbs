@@ -1,20 +1,17 @@
 {{!-- Fixed navbar that shows after scrolling past header --}}
-<div id="navbar" class="navbar-fixed hide-on-med-and-up">
+<div id="navbar" class="navbar-fixed">
     <nav class="">
         <div class="nav-wrapper container">
-            <a href="#" class="brand-logo center">{{@blog.title}}</a>
+            <a href="{{@blog.url}}" class="brand-logo center">{{@blog.title}}</a>
             <ul class="left">
                 <li>
-                    <a href="#" data-target="sidenav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <a href="#!" data-target="sidenav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 </li>
             </ul>
 
             <ul class="right">
                 <li>
                     {{> modal-search}}
-                </li>
-                <li>
-                    {{> modal-subscribe}}
                 </li>
             </ul>
             

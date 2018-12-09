@@ -44,6 +44,16 @@ document.addEventListener("DOMContentLoaded", function() {
  */
 M.updateTextFields();
 
+document.addEventListener("DOMContentLoaded", function() {
+  let elems = document.querySelectorAll(".carousel");
+  let options = {
+    fullWidth: true,
+    indicators: true,
+    duration: 100
+  };
+  var instances = M.Carousel.init(elems, options);
+});
+
 $(document).ready(function() {
   /**
    * INITIATE GHOST SEARCH
@@ -52,12 +62,18 @@ $(document).ready(function() {
   let ghostSearch = new GhostSearch({
     template: function(result) {
       // Add /blog/ route to search results
-      let url = [location.protocol, "//", location.host].join("") + "/blogs/";
+      let url = [location.protocol, "//", location.host].join("") + "/blog/";
       return (
         '<a href="' + url + "/" + result.slug + '">' + result.title + "</a>"
       );
     }
   });
+
+  autoplay();
+  function autoplay() {
+    $(".carousel").carousel("next");
+    setTimeout(autoplay, 4500);
+  }
 });
 
 /**
@@ -71,13 +87,13 @@ let myScrollFunc = function() {
   let navbarID = document.getElementById("navbar");
 
   // Get div client height
-  let clientHeight = document.getElementById("index-header").clientHeight;
+  let clientHeight = document.getElementById("header").clientHeight;
 
   // Window scroll dimension
   let y = window.scrollY;
 
   // If we go past the header image show the navbar div
-  if (y >= clientHeight * 0.97) {
+  if (y >= clientHeight - 71 * 2) {
     // Show navbar div
     navbarID.className = "navbar-fixed";
   } else {
@@ -87,6 +103,6 @@ let myScrollFunc = function() {
 };
 
 // Monitor document window scroll
-window.addEventListener("scroll", myScrollFunc);
+//window.addEventListener("scroll", myScrollFunc);
 // Monitor document window resize
-window.onresize = myScrollFunc;
+// window.onresize = myScrollFunc;

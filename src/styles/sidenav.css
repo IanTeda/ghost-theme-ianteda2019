@@ -1,0 +1,26 @@
+.social-nav{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    
+    svg {
+        width: 24px;
+        height: 24px;
+        fill: black;
+    }
+}
+
+#sidenav{
+    .collection {
+        border:0;
+    
+        .collection-item {
+            padding:0;
+            border:0;
+    
+            a {
+                text-decoration: underline;
+            }
+        }
+    }
+}

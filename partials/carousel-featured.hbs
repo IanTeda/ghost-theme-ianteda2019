@@ -1,0 +1,18 @@
+{{#get "posts" include="tags" filter="featured:true" limit="5"}}
+    {{#if posts}}
+        <div class="carousel carousel-slider center">
+            {{#foreach posts}}
+                <div class="featured carousel-item" href="{{url}}" style="background-image: url({{#if feature_image}}{{img_url feature_image}}{{else}}{{asset "images/cover-home.jpg"}}{{/if}})">
+                    <h2>
+                        <a class="white-text" href="{{url}}">
+                            {{title}}
+                        </a>
+                    </h2>
+                    <p class="white-text">
+                        {{tags separator=" / " prefix="Tagged: "}}
+                    </p>
+                </div>
+            {{/foreach}}
+        </div>
+    {{/if}}
+{{/get}}

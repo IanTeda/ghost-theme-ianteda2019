@@ -1,0 +1,47 @@
+{{!-- Header For Tag Pages --}}
+{{> navbar}}
+
+{{#primary_author}}
+
+    <header 
+        id="header" 
+        class="header-index z-depth-1 flow-text" 
+        style="background-image: url({{#if cover_image}}{{cover_image}}{{else}}{{asset "images/cover-home.jpg"}}{{/if}})">
+        
+
+        <div class="valign-wrapper">
+
+            <div class="container">
+                <div class="row center">
+                    <img class="circle col s8 offset-s2 m4 offset-m4 z-depth-2" 
+                            src="{{#if profile_image}}{{profile_image}}{{else}}{{asset "images/head-shot.png"}}{{/if}}"
+                            alt="Ian Teda head shot">
+                </div>
+
+                <div class="row center">
+                    <div class="col s12">
+
+                        <h1 class="header white-text"><strong>{{name}}</strong></h1>
+
+                        <nav class="transparent nav-center z-depth-0">
+                            <div class="nav-wrapper white-text">
+                                {{#if bio}}
+                                    {{bio}}
+                                {{else}}
+                                    A collection of {{plural ../pagination.total empty='posts' singular='% post' plural='% posts'}}
+                                {{/if}}
+                            </div>
+                        </nav>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="container">
+            <div class="row center">
+                <a href="#home-about"><i class="white-text medium material-icons center-align animated infinite bounce delay-2s slow">details</i></a>
+            </div>
+        </div>
+    </header>
+{{/primary_author}}

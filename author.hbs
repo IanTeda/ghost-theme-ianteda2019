@@ -1,27 +1,38 @@
 {{!< default}}
 
-{{>page-header}}
+<main class="tag" role="main">
+    {{> "header-author"}}
 
-  {{#primary_author}}
-<section>
-<img src="{{img_url profile_image}}" alt="">
-<h2>{{name}}</h2>
-<p>{{bio}}</p>
+    <div class="container">
+        <div class="row">
+            {{!-- Blog Post Feed --}}
+            <div class="col s12 l8 post-feed">
+                <h4>Posts by {{primary_author.name}}</h4>
+                <div class="divider"></div>
+                {{#foreach posts}}
+                    {{> post-card}}
+                {{/foreach}}
 
-{{#if twitter}} <a href="{{twitter_url}}">Find me on twitter {{twitter}}</a> {{/if}}
-<br>
-{{#if facebook}} <a href="{{facebook_url}}">Visit my facebook page {{facebook}}</a> {{/if}}
-<br>
-{{#if website}} <a href="{{website}}">{{website}}</a> {{/if}}
+                {{pagination}}
+            </div>
 
-</ul>
+            {{!--RHS Bar with navigation and tags--}}
+            <div class="col s12 l4">
+                <div class="row">
 
-</section>
+                    {{!--Site Navigation--}}
+                    {{> navigation-list}}
 
-  {{/primary_author}}
+                    {{!-- Collection of featured posts --}}
+                    {{> featured-list}}
 
-      <div class="post-feed">
-   {{#foreach posts}}
-  {{> "post-card"}}
-{{/foreach}}
-</div>
+                    {{!-- Collection of blog tags --}}
+                    {{> tags-popular-list}}
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</main>

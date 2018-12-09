@@ -85,7 +85,7 @@
     "shelljs": "^0.8.2"
   },
   "config": {
-    "posts_per_page": 25
+    "posts_per_page": 5
   },
   "dependencies": {}
 }
