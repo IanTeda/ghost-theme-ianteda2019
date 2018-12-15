@@ -2004,7 +2004,7 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; }
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; }
 
 ul:not(.browser-default) {
   padding-left: 0;
@@ -3281,12 +3281,75 @@ nav {
   .navbar-fixed {
     height: 71px; } }
 
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Black), url("../fonts/Roboto-Black.woff") format("woff");
+  font-weight: 100; }
+
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Black-Italic), url("../fonts/Roboto-BlackItalic.woff") format("woff");
+  font-weight: 100; }
+
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Bold), url("../fonts/Roboto-Bold.woff") format("woff");
+  font-weight: 700; }
+
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Italic), url("../fonts/Roboto-Italic.woff") format("woff");
+  font-weight: 100; }
+
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Light), url("../fonts/Roboto-Light.woff") format("woff");
+  font-weight: 300; }
+
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Light-Italic), url("../fonts/Roboto-LightItalic.woff") format("woff");
+  font-weight: 300; }
+
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Medium), url("../fonts/Roboto-Medium.woff") format("woff");
+  font-weight: 500; }
+
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Medium-Italic), url("../fonts/Roboto-MediumItalic.woff") format("woff");
+  font-weight: 500; }
+
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Regular), url("../fonts/Roboto-Regular.woff") format("woff");
+  font-weight: 400; }
+
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Thin), url("../fonts/Roboto-Thin.woff") format("woff");
+  font-weight: 100; }
+
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Thin-Italic), url("../fonts/Roboto-ThinItalic.woff") format("woff");
+  font-weight: 100; }
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/MaterialIcons-Regular.eot);
+  /* For IE6-8 */
+  src: local("Material Icons"), local("MaterialIcons-Regular"), url(../fonts/MaterialIcons-Regular.woff2) format("woff2"), url(../fonts/MaterialIcons-Regular.woff) format("woff"), url(../fonts/MaterialIcons-Regular.ttf) format("truetype"); }
+
 a {
   text-decoration: none; }
 
 html {
   line-height: 1.5;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-weight: normal;
   color: rgba(0, 0, 0, 0.87); }
   @media only screen and (min-width: 0) {
@@ -3438,6 +3501,28 @@ small {
 @media only screen and (max-width: 360px) {
   .flow-text {
     font-size: 1.2rem; } }
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga'; }
 
 .flow-text {
   font-weight: 300; }

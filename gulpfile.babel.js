@@ -10,11 +10,11 @@ import browserSync from "browser-sync";
  * GULP CONSTANTS
  * Constants used in the Gulpfile
  */
-// Set theme name
+// Set theme name from package.json
 const THEME_NAME = require("./package.json").name;
-// Theme version
+// Set theme version from package.json
 const THEME_VERSION = require("./package.json").version;
-// Theme path is need because we change the working directory with process.chdir above
+// Theme path is need because we change the working directory with process.chdir below
 const THEME_PATH = "content/themes/" + THEME_NAME + "/";
 // Path constants
 const paths = {
@@ -289,7 +289,7 @@ export function styles() {
 }
 
 /**
- * WATCH
+ * WATCH TASK
  * Watch source files for changes and execute task on change
  */
 export function watch() {
@@ -305,7 +305,7 @@ export function watch() {
 }
 
 /**
- * ZIP
+ * ZIP TASK
  * Zip up theme folder for distribution
  */
 export function zip() {
@@ -327,15 +327,15 @@ const build = gulp.series(
 gulp.task("build", build);
 
 /**
- * DISTRIBUTION TASKS
+ * BUNDLE FOR DISTRIBUTION
  * Build the assets, then zip them up
  */
 const dist = gulp.series(build, zip);
 gulp.task("dist", dist);
 
 /**
- * DEFAULT
- * Export default Gulp task
+ * DEFAULT GULP
+ * Default Gulp task
  */
 const develop = gulp.series(build, startNodemon, watch);
 gulp.task("default", develop);
