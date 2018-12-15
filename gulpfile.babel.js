@@ -6,36 +6,17 @@
 import gulp from "gulp";
 import browserSync from "browser-sync";
 
-// Change working directory to Ghost server to run Nodemon
-process.chdir("../../../");
-
 /**
- * GULP LOAD PLUGINS
- * Lazy load plugins, save on var declaration
- * Makes for a nicer read
+ * GULP CONSTANTS
+ * Constants used in the Gulpfile
  */
-const $ = require("gulp-load-plugins")({
-  //  https://github.com/jackfranklin/gulp-load-plugins
-
-  // When set to true, the plugin will log info to console
-  DEBUG: false,
-
-  // the glob(s) to search for in package.json
-  pattern: ["gulp-*", "gulp.*", "del", "merge2", "shelljs"],
-
-  // if true, transforms hyphenated plugins names to camel case
-  camelize: true,
-
-  // whether the plugins should be lazy loaded on demand
-  lazy: true
-});
-
-/**
- * PATH CONSTANTS
- * Some file pat constants
- */
-const THEME_NAME = "ghost-theme-ianteda2019";
+// Set theme name
+const THEME_NAME = require("./package.json").name;
+// Theme version
+const THEME_VERSION = require("./package.json").version;
+// Theme path is need because we change the working directory with process.chdir above
 const THEME_PATH = "content/themes/" + THEME_NAME + "/";
+// Path constants
 const paths = {
   assets: THEME_PATH + "assets/**/*",
   fonts: {
@@ -71,14 +52,55 @@ const paths = {
     dest: THEME_PATH + "assets/styles/",
     watch: THEME_PATH + "src/styles/**/*.css"
   },
-  theme: THEME_PATH + "**/*.hbs"
+  theme: THEME_PATH + "**/*.hbs",
+  zip: {
+    dest: THEME_PATH + "/dist/",
+    filename: THEME_NAME + "." + THEME_VERSION + ".zip",
+    src: [
+      THEME_PATH + "**",
+      "!" + THEME_PATH + "node_modules",
+      "!" + THEME_PATH + "node_modules/**",
+      "!" + THEME_PATH + "src",
+      "!" + THEME_PATH + "src/**",
+      "!" + THEME_PATH + "dist",
+      "!" + THEME_PATH + "dist/**",
+      "!" + THEME_PATH + "assets/styles/*.map",
+      "!" + THEME_PATH + "assets/scripts/*.map"
+    ]
+  }
 };
+
+// Change working directory to Ghost server root so we can run Nodemon for development
+process.chdir("../../../");
+
+/**
+ * GULP LOAD PLUGINS
+ * Lazy load plugins, save on var declaration
+ * Makes for a nicer read
+ */
+const $ = require("gulp-load-plugins")({
+  //  https://github.com/jackfranklin/gulp-load-plugins
+
+  // When set to true, the plugin will log info to console
+  DEBUG: false,
+
+  // the glob(s) to search for in package.json
+  pattern: ["gulp-*", "gulp.*", "del", "merge2", "shelljs"],
+
+  // if true, transforms hyphenated plugins names to camel case
+  camelize: true,
+
+  // whether the plugins should be lazy loaded on demand
+  lazy: true
+});
+
 /**
  * CLEAN ASSETS
  * Delete contents in assets folder
  */
 // Del is executed in node (shell)
-export const clean = () => $.del([paths.assets]);
+export const clean = () =>
+  $.del([paths.assets, paths.zip.dest + "/" + paths.zip.filename]);
 
 /**
  * BROWSER SYNC
@@ -88,7 +110,8 @@ export function startBrowserSync() {
   return browserSync.init({
     // Local ghost dev address
     proxy: "localhost:2368",
-    port: 5000,
+    // Use the same port as Ghost
+    port: 2368,
     browser: "google chrome",
     notify: true
   });
@@ -109,11 +132,12 @@ export function startNodemon(callback) {
     watch: ["some random text"],
     ignore: [".git", "node_modules"],
     ext: "hbs,js,css",
-    stdout: false // without this line the stdout event won't fire
+    stdout: false // without this line the stdout won't fire
   });
 
   let starting = false;
 
+  // When server up fire callback
   const onReady = () => {
     starting = false;
     callback();
@@ -179,6 +203,7 @@ export function sass() {
   return (
     gulp
       .src(paths.sass.src)
+
       // Compile to css
       .pipe($.sass().on("error", $.sass.logError))
 
@@ -280,6 +305,17 @@ export function watch() {
 }
 
 /**
+ * ZIP
+ * Zip up theme folder for distribution
+ */
+export function zip() {
+  return gulp
+    .src(paths.zip.src)
+    .pipe($.zip(paths.zip.filename))
+    .pipe(gulp.dest(paths.zip.dest));
+}
+
+/**
  * BUILD ASSETS
  * Build out assets with Gulp
  */
@@ -289,6 +325,13 @@ const build = gulp.series(
   gulp.parallel(styles, scripts, images, fonts)
 );
 gulp.task("build", build);
+
+/**
+ * DISTRIBUTION TASKS
+ * Build the assets, then zip them up
+ */
+const dist = gulp.series(build, zip);
+gulp.task("dist", dist);
 
 /**
  * DEFAULT
