@@ -1,0 +1,6 @@
+.collection-toc {
+    border: 0;
+    .excerpt {
+        font-style: italic;
+    }
+}

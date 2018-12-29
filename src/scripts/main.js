@@ -54,7 +54,24 @@ document.addEventListener("DOMContentLoaded", function() {
   var instances = M.Carousel.init(elems, options);
 });
 
+/**
+ * INITIATE MATERIALIZE TOOL TIP
+ * https://materializecss.com/tooltips.html
+ */
+document.addEventListener("DOMContentLoaded", function() {
+  let elems = document.querySelectorAll(".tooltipped");
+  let options = {};
+  var instances = M.Tooltip.init(elems, options);
+});
+
 $(document).ready(function() {
+  /**
+   * FitVids
+   * Initialise
+   */
+  // Target your .container, .wrapper, .post, etc.
+  $(".kg-embed-card").fitVids();
+
   /**
    * INITIATE GHOST SEARCH
    * https://github.com/HauntedThemes/ghost-search
@@ -75,34 +92,3 @@ $(document).ready(function() {
     setTimeout(autoplay, 4500);
   }
 });
-
-/**
- * SHOW NAVBAR
- * Show the navbar after scrolling past header image
- */
-
-// Function to change the div class to hide and show
-let myScrollFunc = function() {
-  // What div are we showing and hiding
-  let navbarID = document.getElementById("navbar");
-
-  // Get div client height
-  let clientHeight = document.getElementById("header").clientHeight;
-
-  // Window scroll dimension
-  let y = window.scrollY;
-
-  // If we go past the header image show the navbar div
-  if (y >= clientHeight - 71 * 2) {
-    // Show navbar div
-    navbarID.className = "navbar-fixed";
-  } else {
-    // Hide navbar div on mobile up
-    navbarID.className = "navbar-fixed hide-on-med-and-up";
-  }
-};
-
-// Monitor document window scroll
-//window.addEventListener("scroll", myScrollFunc);
-// Monitor document window resize
-// window.onresize = myScrollFunc;

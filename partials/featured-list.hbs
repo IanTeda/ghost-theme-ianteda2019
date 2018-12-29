@@ -6,7 +6,7 @@
             {{#if posts}}
                 {{#foreach posts}}
                     <li class="collection-item avatar">
-                        <img src="{{#if feature_image}}{{img_url feature_image}}{{else}}{{asset "images/cover-home.jpg"}}{{/if}}" alt="" class="circle">
+                        <img src="{{#if feature_image}}{{img_url feature_image size="t"}}{{else}}{{asset "images/cover-home.jpg"}}{{/if}}" alt="" class="circle">
                         <a href="{{url}}">
                             <span class="title">{{title}}</span>
                         </a>

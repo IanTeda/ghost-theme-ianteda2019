@@ -1,0 +1,38 @@
+{{!< default}}
+
+<main class="index" role="main">
+    {{> "header-engineering-rules"}}
+
+    <div class="container">
+        <div class="row">
+            {{!-- Blog Post Feed --}}
+            <div class="col s12 flow-text">
+                <h4>Introduction</h4>
+                <div class="divider"></div>
+                <p>The engineering rules were born from me wanting to give back some of the lessons taught to me by others and/or by circumstances over my engineering life to date.</p>
+                <p>The specific idea for a rule book, was borrowed from the NCIS character Gibbs and his <a href="http://www.ncisfanwiki.com/m/page/NCIS%3A+Gibbs%27+Rules">rules</a>, that are referenced by characters throughout the series.</p>
+                <p>The engineering rules have not been ordered in any particular order or importance. But as they came to mind and I thought them through.</p>
+                <p>See the below table of contents for a list of the engineering rules.</p>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 post-feed">
+                <h4>Table of Contents</h4>
+                <div class="divider"></div>
+                {{#get "posts" limit="all" order="published_at asc" filter="tag:[engineering-rules]"}}
+                    <ul id="collection-list" class="collection collection-toc">
+                        {{#foreach posts}}
+                            {{> table-of-contents}}
+                        {{/foreach}}
+                    </ul>
+                {{/get}}
+                {{pagination}}
+
+            </div>
+        </div>
+
+    </div>
+    {{!-- reset --}}
+
+</main>

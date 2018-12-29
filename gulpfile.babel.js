@@ -18,7 +18,11 @@ const THEME_VERSION = require("./package.json").version;
 const THEME_PATH = "content/themes/" + THEME_NAME + "/";
 // Path constants
 const paths = {
-  assets: THEME_PATH + "assets/**/*",
+  assets: {
+    built: THEME_PATH + "assets/**/*",
+    src: THEME_PATH + "src/assets/**/*",
+    dest: THEME_PATH + "assets/"
+  },
   fonts: {
     src: THEME_PATH + "src/fonts/**/*.{eot,svg,ttf,woff,woff2,otf}",
     dest: THEME_PATH + "assets/fonts/"
@@ -63,9 +67,7 @@ const paths = {
       "!" + THEME_PATH + "src",
       "!" + THEME_PATH + "src/**",
       "!" + THEME_PATH + "dist",
-      "!" + THEME_PATH + "dist/**",
-      "!" + THEME_PATH + "assets/styles/*.map",
-      "!" + THEME_PATH + "assets/scripts/*.map"
+      "!" + THEME_PATH + "dist/**"
     ]
   }
 };
@@ -95,66 +97,24 @@ const $ = require("gulp-load-plugins")({
 });
 
 /**
+ * ASSETS
+ * Copy misc assets into asset folder
+ */
+export function assets() {
+  return gulp
+    .src(paths.assets.src)
+    .pipe($.flatten())
+    .pipe($.size({ title: "Flatten asset folder structure:" }))
+    .pipe(gulp.dest(paths.assets.dest));
+}
+
+/**
  * CLEAN ASSETS
  * Delete contents in assets folder
  */
 // Del is executed in node (shell)
 export const clean = () =>
-  $.del([paths.assets, paths.zip.dest + "/" + paths.zip.filename]);
-
-/**
- * BROWSER SYNC
- * Sync and reload browser on changes
- */
-export function startBrowserSync() {
-  return browserSync.init({
-    // Local ghost dev address
-    proxy: "localhost:2368",
-    // Use the same port as Ghost
-    port: 2368,
-    browser: "google chrome",
-    notify: true
-  });
-}
-
-/**
- * NODEMON
- * Use Nodemon to restart Ghost when template extensions change
- * @param {*} callback
- */
-export function startNodemon(callback) {
-  const STARTUP_TIMEOUT = 5000;
-
-  // Ghost server
-  const ghostServer = $.nodemon({
-    // verbose: false,
-    script: "current/index.js",
-    watch: ["some random text"],
-    ignore: [".git", "node_modules"],
-    ext: "hbs,js,css",
-    stdout: false // without this line the stdout won't fire
-  });
-
-  let starting = false;
-
-  // When server up fire callback
-  const onReady = () => {
-    starting = false;
-    callback();
-  };
-
-  ghostServer.on("start", () => {
-    starting = true;
-    setTimeout(onReady, STARTUP_TIMEOUT);
-  });
-
-  ghostServer.on("stdout", stdout => {
-    process.stdout.write(stdout); // pass the stdout through
-    if (starting) {
-      onReady();
-    }
-  });
-}
+  $.del([paths.assets.built, paths.zip.dest + "/" + paths.zip.filename]);
 
 /**
  * FONTS
@@ -246,6 +206,59 @@ export function scripts() {
 }
 
 /**
+ * BROWSER SYNC
+ * Sync and reload browser on changes
+ */
+export function startBrowserSync() {
+  return browserSync.init({
+    // Local ghost dev address
+    proxy: "localhost:2368",
+    port: 2368,
+    browser: "google chrome",
+    notify: true
+  });
+}
+
+/**
+ * NODEMON
+ * Use Nodemon to restart Ghost when template extensions change
+ * @param {*} callback
+ */
+export function startNodemon(callback) {
+  const STARTUP_TIMEOUT = 5000;
+
+  // Ghost server
+  const ghostServer = $.nodemon({
+    // verbose: false,
+    script: "current/index.js",
+    watch: ["some random text"],
+    ignore: [".git", "node_modules"],
+    ext: "hbs,js,css",
+    stdout: false // without this line the stdout won't fire
+  });
+
+  let starting = false;
+
+  // When server up fire callback
+  const onReady = () => {
+    starting = false;
+    callback();
+  };
+
+  ghostServer.on("start", () => {
+    starting = true;
+    setTimeout(onReady, STARTUP_TIMEOUT);
+  });
+
+  ghostServer.on("stdout", stdout => {
+    process.stdout.write(stdout); // pass the stdout through
+    if (starting) {
+      onReady();
+    }
+  });
+}
+
+/**
  * STYLES TASK
  * CSS, PostCSS
  */
@@ -322,7 +335,7 @@ export function zip() {
 const build = gulp.series(
   clean,
   sass,
-  gulp.parallel(styles, scripts, images, fonts)
+  gulp.parallel(assets, styles, scripts, images, fonts)
 );
 gulp.task("build", build);
 

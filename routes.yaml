@@ -1,12 +1,17 @@
 routes:
-  /: home
+  /: 
+    template: home
 
 collections:
-  /blog/:
-    permalink: /blog/{slug}/
-    template:
-      - index
+  /engineering-rules/:
+    permalink: /engineering-rules/{slug}/
+    filter: tag:[engineering-rules]
+    template: engineering-rules
+  /blogs/:
+    permalink: /blogs/{slug}/
+    filter: tag:-[engineering-rules]
+    template: index
 
 taxonomies:
-  tag: /tag/{slug}/
-  author: /author/{slug}/
+  tag: /tags/{slug}/
+  author: /authors/{slug}/

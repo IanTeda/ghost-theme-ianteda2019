@@ -4,7 +4,7 @@
         <div class="card hoverable post-card {{post_class}}">
             <div class="card-image">
                 {{#if feature_image}}
-                    <img class="z-depth-1 aspect-ration" src="{{img_url feature_image}}" />
+                    <img class="z-depth-1 aspect-ration" src="{{img_url feature_image size="m"}}" />
                 {{else}}
                     <img class="z-depth-1 aspect-ration" src="{{asset "images/cover-home.jpg"}}" />
                 {{/if}}

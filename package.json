@@ -88,7 +88,25 @@
     "shelljs": "^0.8.2"
   },
   "config": {
-    "posts_per_page": 5
+    "posts_per_page": 5,
+    "image_sizes": {
+        "t": {
+          "width": 150
+        },
+        "s": {
+            "width": 600
+        },
+        "m": {
+            "width": 992
+        },
+        "l": {
+            "width": 1200
+        },
+        "xl": {
+            "width": 2800
+        }
+
+  }
   },
   "dependencies": {}
 }
