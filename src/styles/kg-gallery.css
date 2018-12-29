@@ -1,9 +1,10 @@
 /* required by Ghost 2.0 to validate the theme */
 
 .kg-image {
+    display: block;
     max-width: 100%;
+    margin: 0 auto;
 }
-
 
 .kg-width-wide {
     margin:0;
@@ -40,4 +41,11 @@
     min-width: 100%;
     margin-right: 0;
     margin-left:0;
+}
+
+.kg-card {
+    figcaption {
+        text-align: center;
+        font-style: italic;
+    }
 }

@@ -1,0 +1,117 @@
+{{!< default}}
+
+<main>
+
+  {{!--Start post context block--}}
+  {{#post}}
+
+    {{!--Partial post header template--}}
+    {{>header-post-rule}}
+
+    <div class="container">
+
+      {{!-- Blog post content --}}
+      <article class="row post {{post_class}}">
+        <h2 class="col s12 post-title">
+          {{title}}
+          <span class="right flow-text">
+            2min read
+          </span>
+        </h2>
+        <div class="divider col s12"></div>
+        <section class="col s12 flow-text">
+          {{content}}
+        </section>
+      </article>
+
+      {{!-- Subscribe to blog email highlight--}}
+      <div class="row">
+        <section class="col s12 grey lighten-4 z-depth-1">
+          <h4 class="center">Keep up to date with {{@blog.title}}</h4>
+          <h6 class="center">Get the latest posts delivered right to your inbox</h6>
+          {{> mailchimp}}
+        </section>
+      </div>
+
+      {{!-- Previous & next blog posts--}}
+      <div class="row">
+
+        <div class="col s12 l6">
+          {{#prev_post in="primary_tag"}}
+            
+                <div class="row next-previous valign-wrapper">
+                  <div class="col s1 valign-wrapper">
+                    <i class="tiny material-icons">arrow_back_ios</i>
+                  </div>
+                  <div class="col s2 valign-wrapper">
+                    <img class="circle" src="{{#if feature_image}}{{img_url feature_image size="t"}}{{else}}{{asset "images/cover-home.jpg"}}{{/if}}" alt="{{title}}" >
+                  </div>
+                  <div class="col s9">
+                    <span>Previous Post:</span></br>
+                    <a href="{{url}}"><h5 class="truncate">{{title}}</h5></a>
+                  </div>
+                </div>
+            
+          {{/prev_post}}
+        </div>
+
+        <div class="col s12 l6">
+          {{#next_post in="primary_tag"}}
+            
+              <div class="row next-previous valign-wrapper">
+                <div class="col s9 right-align">
+                  <span>Next Post:</span></br>
+                  <a href="{{url}}"><h5 class="truncate">{{title}}</h5></a>
+                </div>
+                <div class="col s2 valign-wrapper">
+                  <img class="circle" src="{{#if feature_image}}{{img_url feature_image size="t"}}{{else}}{{asset "images/cover-home.jpg"}}{{/if}}" alt="{{title}}" >
+                </div>
+                <div class="col s1">
+                  <i class="tiny material-icons">arrow_forward_ios</i>
+                </div>
+                  
+              </div>
+            
+          {{/next_post}}
+        </div>
+
+      </div>
+
+      <div class="divider"></div>
+
+      {{!-- Related Posts --}}
+      <div class="row">
+        <div class="col s12">
+          <h3>Related Posts:</h3>
+        </div>
+        
+        {{#get "posts" limit="3" filter="id:-{{comment_id}}+tag:{{primary_tag.slug}}"}}
+          {{#foreach posts}}
+            <div class="col s4">
+              <div class="card small hoverable post-card {{post_class}}">
+                  <div class="card-image">
+                      {{#if feature_image}}
+                          <img class="z-depth-1 aspect-ration" src="{{img_url feature_image size="s"}}" />
+                      {{else}}
+                          <img class="z-depth-1 aspect-ration" src="{{asset "images/cover-home.jpg"}}" />
+                      {{/if}}
+                      <span class="card-title">{{title}}</span>
+                  </div>
+                  <div class="card-content">
+                      <p>{{excerpt words="30"}}</p>
+                  </div>
+                  <div class="card-action">
+                      <a href="{{url}}">Goto Post</a>
+                      <span class="right reading-time">{{reading_time}}</span>
+                  </div>
+              </div>
+            </div>
+          {{/foreach}}
+        {{/get}}
+      </div>
+
+    </div>
+
+  {{/post}}
+
+</main>

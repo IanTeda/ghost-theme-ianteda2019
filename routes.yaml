@@ -6,7 +6,7 @@ collections:
   /engineering-rules/:
     permalink: /engineering-rules/{slug}/
     filter: tag:[engineering-rules]
-    template: engineering-rules
+    template: engineering-rules-index
   /blogs/:
     permalink: /blogs/{slug}/
     filter: tag:-[engineering-rules]
