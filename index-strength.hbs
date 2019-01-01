@@ -1,0 +1,34 @@
+{{!< default}}
+
+<main class="index" role="main">
+    {{> "header-strength"}}
+
+    <div class="container">
+        <div class="row">
+            {{!-- Blog Post Feed --}}
+            <div class="col s12 flow-text">
+                <h4>Introduction</h4>
+                <div class="divider"></div>
+                <p>I think Mark Ripetoe put it best in the opening to his book <a href="http://a.co/9CWHkFI">Starting Strength</a>:</p>
+                <p><i>Physical strength is the most important thing in life. This is true whether we want it to be or not. As humanity has developed throughout history, physical strength has become less critical to our daily existence, but no less important to our lives. Our strength, more than any other thing we possess, still determines the quality and quantity of our time here in these bodies. Whereas previously our physical strength determined how much food we ate and how warm and dry we stayed, it now merely determines how well we function in these new surrounding we have crafted for ourselves as our culture has accumulated. But we are still animals -- our physical existence is, in the final analysis the only one that actually matters. A week [person] is not as happy as the same [person] would be if he were strong.</i></p>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 post-feed">
+                <h4>Table of Contents</h4>
+                <div class="divider"></div>
+                {{#get "posts" limit="all" order="published_at asc" filter="tag:[strength]"}}
+                    <ul id="collection-list" class="collection collection-toc">
+                        {{#foreach posts}}
+                            {{> table-of-contents}}
+                        {{/foreach}}
+                    </ul>
+                {{/get}}
+            </div>
+        </div>
+
+    </div>
+    {{!-- reset --}}
+
+</main>
