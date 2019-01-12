@@ -1,18 +1,20 @@
 routes:
   /: 
     template: home
+
+collections:
   /engineering-rules/:
+    permalink: /engineering-rules/{slug}/
     filter: tag:[engineering-rules]
     template: index-engineering-rules
   /letters/:
+    permalink: /letters/{slug}/
     filter: tag:[letters]
     template: index-letters
   /strength/:
+    permalink: /strength/{slug}/
     filter: tag:[strength]
     template: index-strength
-
-
-collections:
   /blogs/:
     permalink: /blogs/{slug}/
     filter: tag:-[engineering-rules, strength, letters]

@@ -27,9 +27,24 @@ textarea {
   font-family: $font-stack;
 }
 
+// Added article ul
+article {
+  ul {
+    &:not(.browser-default) {
+      // Added 40px pad left
+      padding-left: 40px;
+      //list-style-type: none;
+      list-style-type: square;
+  
+      & > li {
+        list-style-type: square;
+      }
+    }
+  }
+}
+
 ul {
   &:not(.browser-default) {
-    padding-left: 0;
     list-style-type: none;
 
     & > li {

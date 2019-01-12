@@ -1,0 +1,17 @@
+[
+    {
+        "from": "/series/the-engineering-rule-book/",
+        "to": "/engineering-rules/",
+        "permanent": true
+    },
+    {
+        "from": "/series/the-strength-initiative/",
+        "to": "/strength/",
+        "permanent": true
+    },
+    {
+        "from": "/series/letters-to-my-children/",
+        "to": "/letters/",
+        "permanent": true
+    }
+]

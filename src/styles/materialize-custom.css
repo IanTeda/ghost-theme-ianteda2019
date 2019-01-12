@@ -2006,8 +2006,13 @@ select,
 textarea {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; }
 
+article ul:not(.browser-default) {
+  padding-left: 40px;
+  list-style-type: square; }
+  article ul:not(.browser-default) > li {
+    list-style-type: square; }
+
 ul:not(.browser-default) {
-  padding-left: 0;
   list-style-type: none; }
   ul:not(.browser-default) > li {
     list-style-type: none; }
