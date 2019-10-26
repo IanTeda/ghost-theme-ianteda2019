@@ -1,6 +1,7 @@
 {{!-- Header for home (landing) page --}}
 {{> navbar}}
-<header id="header" class="header-engineering-rules z-depth-1 flow-text" style="background-image: url({{#if @blog.cover_image}}{{img_url @blog.cover_image size="xl"}}{{else}}{{asset "images/cover-home.jpg"}}{{/if}}">
+<header id="header" class="header-engineering-rules z-depth-1 flow-text"
+    style="background-image: url({{#if @site.cover_image}}{{img_url @site.cover_image size="xl"}}{{else}}{{asset "images/cover-home.jpg"}}{{/if}}">
 
     <div class="valign-wrapper">
         <div class="container">

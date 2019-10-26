@@ -1,5 +1,16 @@
 /* required by Ghost 2.0 to validate the theme */
 
+.kg-bookmark-container {margin: auto;}
+.kg-bookmark-content {margin: auto;}
+.kg-bookmark-title {margin: auto;}
+.kg-bookmark-description {margin: auto;}
+.kg-bookmark-metadata {margin: auto;}
+.kg-bookmark-icon {margin: auto;}
+.kg-bookmark-author {margin: auto;}
+.kg-bookmark-publisher {margin: auto;}
+.kg-bookmark-thumbnail {margin: auto;}
+.kg-bookmark-card{margin: auto;}
+
 .kg-image {
     display: block;
     max-width: 100%;

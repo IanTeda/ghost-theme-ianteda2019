@@ -13,26 +13,26 @@
 
       {{!-- Page Content --}}
       <article class="row page {{post_class}}">
-          
-          <h2 class="col s12 post-title">
-            {{title}}
-            <span class="right flow-text">
-              {{reading_time}}
-            </span>
-          </h2>
 
-          <div class="divider col s12"></div>
-        
-          <section class="col s12 flow-text">
-            {{content}}
-          </section>
+        <h2 class="col s12 post-title">
+          {{title}}
+          <span class="right flow-text">
+            {{reading_time}}
+          </span>
+        </h2>
+
+        <div class="divider col s12"></div>
+
+        <section class="col s12 flow-text">
+          {{content}}
+        </section>
 
       </article>
 
       {{!-- Subscribe to blog email highlight--}}
       <div class="row">
         <section class="col s12 grey lighten-4 z-depth-1">
-          <h4 class="center">Keep up to date with {{@blog.title}}</h4>
+          <h4 class="center">Keep up to date with {{@site.title}}</h4>
           <h6 class="center">Get the latest posts delivered right to your inbox</h6>
           {{> mailchimp}}
         </section>
